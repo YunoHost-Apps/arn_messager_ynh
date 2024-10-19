@@ -1,5 +1,3 @@
-user: "@{{ botaccount }}:{{ server_name }}"
-device_name: "{{ device_name }}"
 can_invite_the_bot: "{{ can_invite_the_bot }}"
 can_be_invited_by_the_bot: "{{ can_be_invited_by_the_bot }}"
 can_answer_to_the_bot: "{{ can_answer_to_the_bot }}"
@@ -17,7 +15,7 @@ botusers:
 admins:
 - '@admin1:{{ domain }}'
 device_id: QBCDGHZRHIU
-device_name: QSDGZETEZ
+device_name: "{{ device_name }}"
 lang: "{{ language }}"
 domain: "https://{{ domain }}"
 welcome_message: ask_portal_admin

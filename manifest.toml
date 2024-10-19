@@ -65,8 +65,8 @@ ram.runtime = "50M"
     ask.en = "Choose a name for the ARN Messager bot"
     ask.fr = "Choisissez un nom pour le robot ARN Messager"
     type = "string"
-    example = "ARN-messager"
-    default = "ARN-messager"
+    example = "ARN Messager"
+    default = "ARN Messager"
 
     [install.botaccount]
     ask.en = "Choose a local synapse user name for the ARN Messager bot"
@@ -74,8 +74,8 @@ ram.runtime = "50M"
     help.en = "A system user will be created. Invite @arnmessager:localsynapse.servername from an authorized Matrix account to start bridging. Give the matrix server_name, not the full domain/url."
     help.fr = "Un utilisateur système sera créé. Inviter @arnmessager:localsynapse.servername depuis un compte Matrix autorisé pour démarrer une passerelle. Donner le nom du serveur matrix, pas le domaine/url complet."
     type = "string"
-    example = "arnmessager"
-    default = "arnmessager"
+    example = "arn_messager"
+    default = "arn_messager"
 
     [install.botnumber]
     ask.en = "Phone number of the Signal/Whatsapp relay account. Use +33612345678 formatting"
@@ -97,7 +97,7 @@ ram.runtime = "50M"
 
     [install.can_be_invited_by_the_bot]
     ask.en = "Choose Matrix instances authorized to be invited by the ARN Messager bot"
-    ask.fr = "Choisissez le/les instances(s) Matrix autorisés à à être invité par le robot ARN Messager"
+    ask.fr = "Choisissez le/les instances(s) Matrix autorisés à être invité par le robot ARN Messager"
     help.en = "Remote servers (matrix.org). Give the Matrix server_name, not the full domain/URL."
     help.fr = "Serveurs distants (matrix.org). Donner le nom du serveur Matrix, pas le domaine/URL complet."
     type = "string"
@@ -110,8 +110,8 @@ ram.runtime = "50M"
     help.en = ""
     help.fr = ""
     type = "string"
-    example = "@whatsapp_[0-9]+"
-    default = "@whatsapp_[0-9]+"
+    example = "@wa_[0-9]+"
+    default = "@wa_[0-9]+"
 
     [install.im_bridged]
     ask.en = "list of social network instant messaging in which this robot could be bridged."
@@ -119,8 +119,8 @@ ram.runtime = "50M"
     help.en = ""
     help.fr = ""
     type = "string"
-    example = "Whatsapp"
-    default = "Whatsapp"
+    example = "whatsapp"
+    default = "whatsapp"
 
 [resources]
     # See the packaging documentation for the full set
