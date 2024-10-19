@@ -7,7 +7,7 @@ name = "ARN Messager"
 description.en = "ARN Messager is a bot to use in addition of mautrix to allow matrix users without administration right to be connected with a whatsapp group."
 description.fr = "ARN Messager est un robot à utiliser en complément de mautrix pour permettre aux utilisateurs de matrix sans droit d'administration d'être connectés à un groupe whatsapp."
 
-version = "1.0~ynh1"
+version = "1.1~ynh1"
 
 maintainers = ["Thatoo"]
 
@@ -52,14 +52,14 @@ ram.runtime = "50M"
     choices = ["fr", "en"]
     default = "fr"
 
-    [install.synapsenumber]
-    ask.en = "Choose the local synapse instance number to communicate with ARN Messager"
-    ask.fr = "Choisissez le numéro de l'instance synapse qui doit communiquer avec ARN Messager"
-    help.en = "If you installed synapse only once, then leave default value 1."
-    help.fr = "Si vous n'avez installé qu'une fois synapse, gardez la valeur par défaut 1."
+    [install.homeserver]
+    ask.en = "Choose the local Matrix Home Server instance to communicate with ARN Messager"
+    ask.fr = "Choisissez l'instance locale de Home Server Matrix qui doit communiquer avec ARN Messager"
+    help.en = "Only synapse supported. If you installed synapse only once, then leave default value synapse."
+    help.fr = "Seul Synapse est supporté. Si vous n'avez installé qu'une fois synapse, gardez la valeur par défaut synapse."
     type = "string"
-    example = "2 (for instance synapse__2)"
-    default = "1"
+    example = "synapse__2"
+    default = "synapse"
 
     [install.botname]
     ask.en = "Choose a name for the ARN Messager bot"
@@ -76,6 +76,15 @@ ram.runtime = "50M"
     type = "string"
     example = "arnmessager"
     default = "arnmessager"
+
+    [install.botnumber]
+    ask.en = "Phone number of the Signal/Whatsapp relay account. Use +33612345678 formatting"
+    ask.fr = "Numéro de téléphone du compte Signal/Whatsapp relai. Au format +33612345678"
+    help.en = "You will have to scan the QR code sent by the bridge with the Signal/Whatsapp App linked to this number."
+    help.fr = "Il faudra scanner le QR code envoyé par le bridge avec l'appli Signal/Whatsapp liée à ce numéro."
+    type = "string"
+    example = "+33612345678"
+    default = "+33612345678"
 
     [install.can_invite_the_bot]
     ask.en = "Choose mautrix bots allowed to invite this bot in a room"
@@ -145,4 +154,4 @@ ram.runtime = "50M"
     [resources.apt]
     # This will automatically install/uninstall the following apt packages
     # and implicitly define the $phpversion setting as 8.0 (if phpX.Y-foobar dependencies are listed)
-    packages = "python3-venv, python3-pip"
+    packages = "python3-venv, python3-pip, python3-wheel, python3-pyyaml, python3-dnspython, libolm-dev, python3-matrix-nio"

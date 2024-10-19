@@ -1,11 +1,31 @@
 user: "@{{ botaccount }}:{{ server_name }}"
-server: "{{ server_name }}"
 device_name: "{{ device_name }}"
-access_token: "{{ access_token }}"
 can_invite_the_bot: "{{ can_invite_the_bot }}"
 can_be_invited_by_the_bot: "{{ can_be_invited_by_the_bot }}"
 can_answer_to_the_bot: "{{ can_answer_to_the_bot }}"
-bot_name: "{{ botname }}"
 im_bridged: "{{ im_bridged }}"
-welcome_message: "Hello, welcome"
+
+# This is an example file that can be auto-generated at first startup -> rename it supervisor_botadmin
+access_token: "{{ access_token }}"
+server_name: "{{ server_name }}"
+# ARN messager is the Matrix user logged in to the mautrix IM bridges set in relaybot mode
+relaybot_admin: "@{{ botaccount }}:{{ server_name }}" 
+bot_name: "{{ botname }}"
+bot_number: "{{ botnumber }}"
+botusers:
+- "{{ server_name }}"
+admins:
+- '@admin1:{{ domain }}'
+device_id: QBCDGHZRHIU
+device_name: QSDGZETEZ
 lang: "{{ language }}"
+domain: "https://{{ domain }}"
+welcome_message: ask_portal_admin
+whatsapp:
+  bot: '@whatsappbot:{{ domain }}'
+  command_prefix: '!wa'
+  puppet: '@wa_[0-9]+:{{ domain }}$'
+signal:
+  bot: '@signalbot:{{ domain }}'
+  command_prefix: '!sg'
+  puppet: '@sg_[0-9]+:{{ domain }}$'
