@@ -86,41 +86,32 @@ ram.runtime = "50M"
     example = "+33612345678"
     default = "+33612345678"
 
-    [install.can_invite_the_bot]
-    ask.en = "Choose mautrix bots allowed to invite this bot in a room"
-    ask.fr = "Choisissez les robots mautrix autorisés à inviter le robot dans un salon"
-    help.en = ""
-    help.fr = ""
-    type = "string"
-    example = "@whatsappbot"
-    default = "@whatsappbot"
-
-    [install.can_be_invited_by_the_bot]
-    ask.en = "Choose Matrix instances authorized to be invited by the ARN Messager bot"
-    ask.fr = "Choisissez le/les instances(s) Matrix autorisés à être invité par le robot ARN Messager"
-    help.en = "Remote servers (matrix.org). Give the Matrix server_name, not the full domain/URL."
-    help.fr = "Serveurs distants (matrix.org). Donner le nom du serveur Matrix, pas le domaine/URL complet."
-    type = "string"
-    example = "server.name"
-    default = "domain.tld"
-
-    [install.can_answer_to_the_bot]
-    ask.en = "List of users (from the other side of bridge) allowed to speak to the bot"
-    ask.fr = "Liste des utilisateurs (de l'autre côté du pont) autorisés à parler au robot"
-    help.en = ""
-    help.fr = ""
-    type = "string"
-    example = "@wa_[0-9]+"
-    default = "@wa_[0-9]+"
-
-    [install.im_bridged]
-    ask.en = "list of social network instant messaging in which this robot could be bridged."
-    ask.fr = "liste des réseaux sociaux de messagerie instantanée dans lesquels ce robot pourrait être intégré."
-    help.en = ""
-    help.fr = ""
+    [install.bridge]
+    ask.en = "Relay bridge instance to be managed via its bot"
+    ask.fr = "Instance de passerelle relai à gérer via son robot"
+    help.en = "List of instant messaging (social) network that you want to relay."
+    help.fr = "Liste des réseaux (sociaux) de messagerie instantanée que vous voulez relayer."
     type = "string"
     example = "whatsapp"
-    default = "whatsapp"
+    default = "signal"
+
+    [install.botusers]
+    ask.en = "Choose Matrix instances authorized to invite the ARN Messager bot"
+    ask.fr = "Choisissez les instances Matrix autorisées à inviter le robot ARN Messager"
+    help.en = "Usually local server. Give the Matrix server_name, not the full domain/URL."
+    help.fr = "Typiquement le serveur local. Donner le server_name du serveur Matrix, pas le domaine/URL complet."
+    type = "string"
+    example = "synapse_server.name"
+    default = "domain.tld"
+
+    [install.admins]
+    ask.en = "Choose Matrix users or instances authorized to send control commands to the bridges over ARN Messager"
+    ask.fr = "Choisissez les comptes ou instances Matrix autorisés à contrôler les passerelles à travers ARN Messager"
+    help.en = "Usually local synapse server admin. Give the full Matrix address (MXID)."
+    help.fr = "Typiquement les admins du serveur synapse local. Donner l'identifiant Matrix complet (MXID)."
+    type = "string"
+    example = "@admin:synapse_server.name"
+    default = "@admin:domain.tld"
 
 [resources]
     # See the packaging documentation for the full set
@@ -154,4 +145,4 @@ ram.runtime = "50M"
     [resources.apt]
     # This will automatically install/uninstall the following apt packages
     # and implicitly define the $phpversion setting as 8.0 (if phpX.Y-foobar dependencies are listed)
-    packages = "python3-venv, python3-pip, python3-wheel, python3-pyyaml, python3-dnspython, libolm-dev, python3-matrix-nio"
+    packages = "python3-venv, python3-pip, python3-wheel, python3-pyyaml, python3-dnspython, python3-matrix-nio"
