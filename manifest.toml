@@ -24,7 +24,7 @@ code = "https://code.ffdn.org/arn/arn-messager"
 fund = "https://don.arn-fai.net/"
 
 [integration]
-yunohost = ">= 11.2"
+yunohost = ">= 12" # required for python3
 # FIXME: can be replaced by a list of supported archs using the dpkg --print-architecture nomenclature (amd64/i386/armhf/arm64), for example: ["amd64", "i386"]
 architectures = "all"
 multi_instance = false
@@ -145,4 +145,4 @@ ram.runtime = "50M"
     [resources.apt]
     # This will automatically install/uninstall the following apt packages
     # and implicitly define the $phpversion setting as 8.0 (if phpX.Y-foobar dependencies are listed)
-    packages = "python3-venv, python3-pip, python3-wheel, python3-pyyaml, python3-dnspython, python3-matrix-nio"
+    packages = "python3-venv, python3-pip, python3-wheel, python3-yaml, python3-dnspython, python3-matrix-nio"
