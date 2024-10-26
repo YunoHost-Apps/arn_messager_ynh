@@ -7,7 +7,7 @@ name = "ARN Messager"
 description.en = "ARN Messager is a bot to use in addition of mautrix to allow matrix users without administration right to be connected with a whatsapp group."
 description.fr = "ARN Messager est un robot à utiliser en complément de mautrix pour permettre aux utilisateurs de matrix sans droit d'administration d'être connectés à un groupe whatsapp."
 
-version = "1.1~ynh1"
+version = "1.2~ynh1"
 
 maintainers = ["Thatoo"]
 
@@ -123,8 +123,8 @@ ram.runtime = "50M"
     # This will pre-fetch the asset which can then be deployed during the install/upgrade scripts with :
     #    ynh_setup_source --dest_dir="$install_dir"
     # You can also define other assets than "main" and add --source_id="foobar" in the previous command
-    url = "https://code.ffdn.org/arn/arn-messager/-/archive/1.1.0/arn-messager-1.1.0.tar.gz"
-    sha256 = "933e517fe02595bf44b0978391fb464ba988b4c40679da29b7b9cb125f567513"
+    url = "https://code.ffdn.org/arn/arn-messager/-/archive/testing/arn-messager-testing.tar.gz"
+    sha256 = "5868f71f6065abff0e809df1ac5fdc71786b1463b8ab8d546baabbb7b51cca7a"
 
     # These infos are used by https://github.com/YunoHost/apps/blob/master/tools/autoupdate_app_sources/autoupdate_app_sources.py
     # to auto-update the previous asset urls and sha256sum + manifest version
