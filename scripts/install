@@ -78,11 +78,12 @@ elif [ "$bridge" == "whatsapp" ]; then
 	botname_wa=$botname
 	#command_prefix_wa=$command_prefix
 	#username_template_wa=$username_template
-else
+fi
+#else
 	#botname_wa=''
 	#command_prefix_wa=''
 	#username_template_wa=''
-fi
+#fi
 
 # register $botaccount with $botpassword and get $access_token
 botpassword= #find a way to generate a password
