@@ -1,11 +1,29 @@
-user: "@{{ botaccount }}:{{ server_name }}"
-server: "{{ server_name }}"
-device_name: "{{ device_name }}"
+# This is an example file that can be auto-generated at first startup -> rename it supervisor_botadmin
 access_token: "{{ access_token }}"
-can_invite_the_bot: "{{ can_invite_the_bot }}"
-can_be_invited_by_the_bot: "{{ can_be_invited_by_the_bot }}"
-can_answer_to_the_bot: "{{ can_answer_to_the_bot }}"
+server_name: "{{ server_name }}"
+# ARN messager is the Matrix user logged in to the mautrix IM bridges set in relaybot mode
+relaybot_admin: "@{{ botaccount }}:{{ server_name }}" 
 bot_name: "{{ botname }}"
-im_bridged: "{{ im_bridged }}"
-welcome_message: "Hello, welcome"
+bot_number: "{{ botnumber }}"
+botusers:
+- "{{ botusers }}"
+admins:
+- '{{ admins }}'
+device_id: QBCDGHZRHIU
+device_name: "{{ device_name }}"
 lang: "{{ language }}"
+domain: "https://{{ domain }}"
+welcome_message: ask_portal_admin
+im_bridged: "{{ bridge }}"
+whatsapp:
+  bot: '@{{ botname_wa }}:{{ server_name }}'
+  command_prefix: '{{ command_prefix_wa }}'
+  puppet: '@{{ username_template_wa }}[0-9]+:{{ server_name }}$'
+signal:
+  bot: '@{{ botname_sg }}:{{ server_name }}'
+  command_prefix: '{{ command_prefix_sg }}
+  puppet: '@{{ username_template_sg }}[0-9]+:{{ server_name }}$'
+telegram:
+  bot: '@{{ botname_tg }}:{{ server_name }}'
+  command_prefix: '{{ command_prefix_tg }}
+  puppet: '@{{ username_template_tg }}[0-9]+:{{ server_name }}$'

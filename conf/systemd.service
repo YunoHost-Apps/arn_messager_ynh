@@ -1,5 +1,5 @@
 [Unit]
-Description=Le bot ARN-Messager
+Description=Robot ARN-Messager
 After=network.target
 
 [Service]
