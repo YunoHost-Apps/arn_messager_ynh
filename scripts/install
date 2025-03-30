@@ -96,7 +96,8 @@ device_name="QSDGZETEZ"
 # register $botaccount with $botpassword and get $access_token
 botpassword=$device_name #find a way to generate a password
 # ynh_app_setting_set --app="$app" --key=botpassword --value="$botpassword"
-printf "$botaccount\n$botpassword\n$botpassword\nn" | ynh_exec_as $homeserver /opt/yunohost/matrix-$homeserver/bin/register_new_matrix_user -c /etc/matrix-$homeserver/homeserver.yaml
+# printf "$botaccount\n$botpassword\n$botpassword\nn" | 
+ynh_exec_as $homeserver /opt/yunohost/matrix-$homeserver/bin/register_new_matrix_user -u $botaccount -p $botpassword -a no -c /etc/matrix-$homeserver/homeserver.yaml
 #Prompt to answer 
 #New user localpart: $botaccount
 #Password: $botpassword
