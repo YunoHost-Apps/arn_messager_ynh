@@ -21,9 +21,9 @@ whatsapp:
   puppet: '@{{ username_template_wa }}[0-9]+:{{ server_name }}$'
 signal:
   bot: '@{{ botname_sg }}:{{ server_name }}'
-  command_prefix: '{{ command_prefix_sg }}
-  puppet: '@{{ username_template_sg }}[0-9]+:{{ server_name }}$'
+  command_prefix: '{{ command_prefix_sg }}'
+  puppet: '@{{ username_template_sg }}[a-z0-9-]+:{{ server_name }}$'
 telegram:
   bot: '@{{ botname_tg }}:{{ server_name }}'
-  command_prefix: '{{ command_prefix_tg }}
-  puppet: '@{{ username_template_tg }}[0-9]+:{{ server_name }}$'
+  command_prefix: '{{ command_prefix_tg }}'
+  puppet: '@{{ username_template_tg }}[a-z0-9-]+:{{ server_name }}$'
