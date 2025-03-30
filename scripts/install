@@ -39,8 +39,9 @@ server_name=$(ynh_app_setting_get --app "$homeserver" --key server_name)
 domain=$(ynh_app_setting_get --app "$homeserver" --key domain)
 
 # mautrix_ynh settings: synapsenumber botname bot_synapse_admin encryption botadmin botusers enable_relaybot
-botname=$(ynh_app_setting_get --app "mautrix_$bridge" --key botname)
-#command_prefix=$(ynh_app_setting_get --app "mautrix_$bridge" --key command_prefix)
+mautrix_botname=$(ynh_app_setting_get --app "mautrix_$bridge" --key botname)
+# command_prefix=$(ynh_app_setting_get --app "mautrix_$bridge" --key command_prefix)
+# username_template=$(ynh_app_setting_get --app "mautrix_$bridge" --key username_template)
 #puppet=$(ynh_app_setting_get --app "mautrix_$bridge" --key puppet)
 #encryption=$(ynh_app_setting_get --app "mautrix_$bridge" --key encryption)
 #enable_relaybot=$(ynh_app_setting_get --app "mautrix_$bridge" --key enable_relaybot)
@@ -56,26 +57,31 @@ if [ "$admins" == "@admin:domain.tld" ]; then
 	admins="@admin:$server_name"
 fi
 
-botname_sg='signalbot'
-botname_tg='telegrambot'
-botname_wa='whatsappbot'
-username_template_sg='sg_'
-username_template_tg='tg_'
-username_template_wa='wa_'
+#botname_sg='signalbot'
+#botname_tg='telegrambot' # OK see bot_username
+#botname_wa='whatsappbot'
+#username_template_sg='sg_' # modifier mautrix_signal_ynh avec sg_{{.}}
+  # {userid} is replaced with the user ID of the Telegram user.
+  #username_template: "telegram_{userid}"
+#username_template_tg='tg_' # modifier mautrix_telegram_ynh avec telegram_{userid}
+#username_template_wa='wa_' # modifier mautrix_whatsapp_ynh avec whatsapp_{{.}}
+# à ajouter au config panel de https://github.com/YunoHost-Apps/mautrix_signal_ynh/blob/master/conf/config.yaml#L31
 command_prefix_sg='!sg'
+# à ajouter au config panel de https://github.com/YunoHost-Apps/mautrix_telegram_ynh/blob/master/conf/config.yaml#L482
 command_prefix_tg='!tg'
+# à ajouter au config panel de https://github.com/YunoHost-Apps/mautrix_whatsapp_ynh/blob/master/conf/config.yaml#L314
 command_prefix_wa='!wa'
 
 if [ "$bridge" == "signal" ]; then
-	botname_sg=$botname
+	botname_sg=$mautrix_botname
 	#command_prefix_sg=$command_prefix
 	#username_template_sg=$username_template
 elif [ "$bridge" == "telegram" ]; then
-	botname_tg=$botname
+	botname_tg=$mautrix_botname
 	#command_prefix_tg=$command_prefix
 	#username_template_tg=$username_template
 elif [ "$bridge" == "whatsapp" ]; then
-	botname_wa=$botname
+	botname_wa=$mautrix_botname
 	#command_prefix_wa=$command_prefix
 	#username_template_wa=$username_template
 fi
@@ -85,9 +91,11 @@ fi
 	#username_template_wa=''
 #fi
 
+device_name="QSDGZETEZ"
+
 # register $botaccount with $botpassword and get $access_token
-botpassword= #find a way to generate a password
-ynh_app_setting_set --app="$app" --key=botpassword --value="$botpassword"
+botpassword=$device_name #find a way to generate a password
+# ynh_app_setting_set --app="$app" --key=botpassword --value="$botpassword"
 printf "$botaccount\n$botpassword\n$botpassword\nn" | ynh_exec_as $homeserver /opt/yunohost/matrix-$homeserver/bin/register_new_matrix_user -c /etc/matrix-$homeserver/homeserver.yaml
 #Prompt to answer 
 #New user localpart: $botaccount
@@ -96,9 +104,9 @@ printf "$botaccount\n$botpassword\n$botpassword\nn" | ynh_exec_as $homeserver /o
 #Make admin [no]:
 #Success!
 
-# $access_token=$(curl '{"type":"m.login.password", "user":"'$botaccount'", "password":"'$botpassword'"}' "https://$domain/_matrix/client/v3/login")
+access_token=$(curl '{"type":"m.login.password", "user":"'$botaccount'", "password":"'$botpassword'"}' "https://$domain/_matrix/client/v3/login")
 
-ynh_app_setting_set --app="$app" --key=access_token --value="$access_token"
+# ynh_app_setting_set --app="$app" --key=access_token --value="$access_token"
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
