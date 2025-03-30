@@ -37,6 +37,7 @@ source /usr/share/yunohost/helpers
 
 server_name=$(ynh_app_setting_get --app "$homeserver" --key server_name)
 domain=$(ynh_app_setting_get --app "$homeserver" --key domain)
+port_synapse_tls=$(ynh_app_setting_get --app "$homeserver" --key port_synapse_tls)
 
 # mautrix_ynh settings: synapsenumber botname bot_synapse_admin encryption botadmin botusers enable_relaybot
 mautrix_botname=$(ynh_app_setting_get --app "mautrix_$bridge" --key botname)
@@ -97,7 +98,7 @@ device_name="QSDGZETEZ"
 botpassword=$device_name #find a way to generate a password
 # ynh_app_setting_set --app="$app" --key=botpassword --value="$botpassword"
 # printf "$botaccount\n$botpassword\n$botpassword\nn" | 
-ynh_exec_as $homeserver /opt/yunohost/matrix-$homeserver/bin/register_new_matrix_user -u $botaccount -p $botpassword -c /etc/matrix-$homeserver/homeserver.yaml
+ynh_exec_as $homeserver /opt/yunohost/matrix-$homeserver/bin/register_new_matrix_user -u $botaccount -p $botpassword -a -c /etc/matrix-$homeserver/homeserver.yaml
 #Prompt to answer 
 #New user localpart: $botaccount
 #Password: $botpassword
@@ -105,7 +106,7 @@ ynh_exec_as $homeserver /opt/yunohost/matrix-$homeserver/bin/register_new_matrix
 #Make admin [no]:
 #Success!
 
-access_token=$(curl '{"type":"m.login.password", "user":"'$botaccount'", "password":"'$botpassword'"}' "https://$domain/_matrix/client/v3/login")
+access_token=$(curl '{"type":"m.login.password", "user":"'$botaccount'", "password":"'$botpassword'"}' "https://localhost:$port_synapse_tls/_matrix/client/v3/login")
 
 # ynh_app_setting_set --app="$app" --key=access_token --value="$access_token"
 
