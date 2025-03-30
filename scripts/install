@@ -98,12 +98,12 @@ device_name="QSDGZETEZ"
 botpassword=$device_name #find a way to generate a password
 # ynh_app_setting_set --app="$app" --key=botpassword --value="$botpassword"
 access_token=""
-access_token=$(curl '{"type":"m.login.password", "user":"'$botaccount'", "password":"'$botpassword'"}' "https://localhost:$port_synapse_tls/_matrix/client/v3/login")
+access_token=$(curl '{"type":"m.login.password", "user":"'$botaccount'", "password":"'$botpassword'"}' "http://localhost:$port_synapse_tls/_matrix/client/v3/login")
 if [access_token != ""]
 then
 # printf "$botaccount\n$botpassword\n$botpassword\nn" | 
 ynh_exec_as $homeserver /opt/yunohost/matrix-$homeserver/bin/register_new_matrix_user -u $botaccount -p $botpassword -a -c /etc/matrix-$homeserver/homeserver.yaml
-access_token=$(curl '{"type":"m.login.password", "user":"'$botaccount'", "password":"'$botpassword'"}' "https://localhost:$port_synapse_tls/_matrix/client/v3/login")
+access_token=$(curl '{"type":"m.login.password", "user":"'$botaccount'", "password":"'$botpassword'"}' "http://localhost:$port_synapse_tls/_matrix/client/v3/login")
 fi
 
 #Prompt to answer 
