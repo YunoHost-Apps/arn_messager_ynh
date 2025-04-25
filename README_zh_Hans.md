@@ -1,6 +1,6 @@
 # 打包应用，从这个示例开始
 
-- 使用 Github 代码库中的['使用此模板'](https://github.com/new?template_name=example_ynh&template_owner=YunoHost)按钮复制此应用，然后再对其进行操作
+- 使用 Github 代码库中的['使用此模板'](https://github.com/new?stemplate_name=example_ynh&template_owner=YunoHost)按钮复制此应用，然后再对其进行操作
 - 编辑 `manifest.toml` 文件以补充应用特定信息
 - 编辑 `install`, `upgrade`, `remove`, `backup` 和 `restore` 脚本，以及 `conf/` 中的任何相关配置文件
   - 使用[脚本帮助文档](https://yunohost.org/packaging_apps_helpers)
