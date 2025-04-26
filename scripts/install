@@ -124,11 +124,10 @@ ynh_script_progression --message="Setting up source files..." --weight=1
 ### `ynh_setup_source` use the file manifest.toml
 
 # Download, check integrity, uncompress and patch the source from manifest.toml
-#ynh_setup_source --dest_dir="$install_dir"
-install_sources
+ynh_setup_source --dest_dir="$install_dir"
 
 # Install virtualenv
-#python3 -m venv $install_dir
+python3 -m venv $install_dir
 #ynh_exec_as $app $install_dir/bin/python -m pip install -r requirements.txt
 
 ### $install_dir will automatically be initialized with some decent
@@ -170,7 +169,7 @@ chown "$app:$app" "$install_dir/config.yaml"
 
 # If no access token, ask password to get one (first connexion)
 #printf "$botpassword\n" | ynh_exec_as $app env PATH=$install_dir/arn-messager -u "@$botaccount:$server_name" & PID=$!
-printf "$botpassword\n" | $install_dir/bin/python -m arn-messager -u "@$botaccount:$server_name" & PID=$!
+printf "$botpassword\n" | ynh_exec_as $app $install_dir/bin/python -m arn-messager -u "@$botaccount:$server_name" & PID=$!
 # Wait for 5 seconds
 sleep 5
 # Kill it
