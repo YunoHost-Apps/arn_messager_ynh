@@ -169,7 +169,7 @@ chown "$app:$app" "$install_dir/config.yaml"
 
 # If no access token, ask password to get one (first connexion)
 #printf "$botpassword\n" | ynh_exec_as $app env PATH=$install_dir/arn-messager -u "@$botaccount:$server_name" & PID=$!
-printf "$botpassword\n" | ynh_exec_as $app $install_dir/bin/python -m arn-messager -u "@$botaccount:$server_name" & PID=$!
+printf "$botpassword\n" | ynh_exec_as $app $install_dir/arn-messager -u "@$botaccount:$server_name" & PID=$!
 # Wait for 5 seconds
 sleep 5
 # Kill it
