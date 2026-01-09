@@ -4,11 +4,11 @@ It shall NOT be edited by hand.
 -->
 
 <h1>
-  <img src="https://raw.githubusercontent.com/YunoHost/apps/main/logos/arn_messager.png" width="32px" alt="Logo of ARN Messager">
-  ARN Messager, packaged for YunoHost
+  <img src="https://raw.githubusercontent.com/YunoHost/apps/main/logos/arn_messager.png" width="32px" alt="Logo of ARN-Messager">
+  ARN-Messager, packaged for YunoHost
 </h1>
 
-ARN Messager is a bot to use in addition of mautrix to allow matrix users without administration right to be connected with a whatsapp group.
+ARN-Messager is a bot to use in addition of mautrix to allow matrix users without administration right to be connected with a whatsapp group.
 
 [![Version: 1.2~ynh1](https://img.shields.io/badge/Version-1.2~ynh1-rgba(0,150,0,1)?style=for-the-badge)](https://ci-apps.yunohost.org/ci/apps/arn_messager/)
 
@@ -21,7 +21,7 @@ ARN Messager is a bot to use in addition of mautrix to allow matrix users withou
 
 [![Automatic tests level](https://apps.yunohost.org/badge/cilevel/arn_messager)](https://ci-apps.yunohost.org/ci/apps/arn_messager/)
 
-🛠️ Upstream ARN Messager repository: <https://code.ffdn.org/arn/arn-messager>
+🛠️ Upstream ARN-Messager repository: <https://code.ffdn.org/arn/arn-messager>
 
 Pull request are welcome and should target the [`testing` branch](https://github.com/YunoHost-Apps/arn_messager_ynh/tree/testing).
 
