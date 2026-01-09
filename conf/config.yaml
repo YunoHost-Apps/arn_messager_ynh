@@ -1,8 +1,10 @@
 # This is an example file that can be auto-generated at first startup -> rename it supervisor_botadmin
 access_token: "{{ access_token }}"
+homeserver: "{{ homeserver }}"
 server_name: "{{ server_name }}"
-# ARN messager is the Matrix user logged in to the mautrix IM bridges set in relaybot mode
-relaybot_admin: "@{{ botaccount }}:{{ server_name }}" 
+public_baseurl: "https://{{ domain }}"
+# ARN-Messager is the Matrix user logged in to the mautrix IM bridges set in relaybot mode
+relaybot_admin: "{{ relaybot_admin }}" 
 bot_name: "{{ botname }}"
 bot_number: "{{ botnumber }}"
 botusers:
@@ -12,13 +14,12 @@ admins:
 device_id: QBCDGHZRHIU
 device_name: "{{ device_name }}"
 lang: "{{ language }}"
-domain: "https://{{ domain }}"
-welcome_message: ask_portal_admin
+welcome_message: "{{ welcome_message }}"
 im_bridged: "{{ bridge }}"
 whatsapp:
   bot: '@{{ botname_wa }}:{{ server_name }}'
   command_prefix: '{{ command_prefix_wa }}'
-  puppet: '@{{ username_template_wa }}[0-9]+:{{ server_name }}$'
+  puppet: '@{{ username_template_wa }}[a-z0-9-]+:{{ server_name }}$'
 signal:
   bot: '@{{ botname_sg }}:{{ server_name }}'
   command_prefix: '{{ command_prefix_sg }}'
