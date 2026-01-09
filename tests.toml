@@ -17,8 +17,8 @@ test_format = 1.0
         domain=matrix.domain.tld
         server_name=$domain
         sudo yunohost app install https://github.com/YunoHost-Apps/synapse_ynh -a "domain=$domain&init_main_permission=all_users&server_name=$server_name&is_free_registration=false" --force
-        botadmin = "@johndoe:$server_name"
-        botusers = "$server_name"
+        botadmin="@johndoe:$server_name"
+        botusers="$server_name"
         # We test with mautrix_whatsapp because amd64, arm64 and armhf are available
         sudo yunohost app list | grep "mautrix_whatsapp" || sudo yunohost app install https://github.com/YunoHost-Apps/mautrix_whatsapp_ynh/ \
             -a "botadmin=$botadmin&botusers=$botusers" --force
@@ -52,8 +52,8 @@ test_format = 1.0
         domain=matrix.domain.tld
         server_name=$domain
         sudo yunohost app install https://github.com/YunoHost-Apps/synapse_ynh -a "domain=$domain&init_main_permission=all_users&server_name=$server_name&is_free_registration=false" --force
-        botadmin = "@johndoe:$server_name"
-        botusers = "$server_name"
+        botadmin="@johndoe:$server_name"
+        botusers="$server_name"
         # We test with mautrix_whatsapp because amd64, arm64 and armhf are available
         sudo yunohost app list | grep "mautrix_whatsapp" || sudo yunohost app install https://github.com/YunoHost-Apps/mautrix_whatsapp_ynh/ \
             -a "botadmin=$botadmin&botusers=$botusers" --force
