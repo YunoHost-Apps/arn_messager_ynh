@@ -123,7 +123,7 @@ ram.runtime = "50M"
     #extract = false
     #rename = "mautrix-whatsapp"
     url = "https://code.ffdn.org/arn/arn-messager/-/archive/testing/arn-messager-testing.tar.gz"
-    sha256 = "5868f71f6065abff0e809df1ac5fdc71786b1463b8ab8d546baabbb7b51cca7a"
+    sha256 = "a3c783588c86dd4a8d0812ca4756a974c93bda0ffcf3d0c39d81b77bc0b16392"
 
     # These infos are used by https://github.com/YunoHost/apps/blob/master/tools/autoupdate_app_sources/autoupdate_app_sources.py
     # to auto-update the previous asset urls and sha256sum + manifest version
