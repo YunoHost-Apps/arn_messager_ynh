@@ -29,10 +29,8 @@ test_format = 1.0
     # -------------------------------
 
     args.bridge = "mautrix_whatsapp"
-    domain=matrix.domain.tld
-    server_name=$domain
-    args.botusers = "$server_name"
-    args.admins = "@johndoe:$server_name"
+    args.botusers = "matrix.domain.tld"
+    args.admins = "@johndoe:matrix.domain.tld"
 
     # -------------------------------
     # Commits to test upgrade from
@@ -68,7 +66,5 @@ test_format = 1.0
     only = ["install.subdir"]
 
     args.bridge = "mautrix_whatsapp,mautrix_signal"
-    domain=matrix.domain.tld
-    server_name=$domain
-    args.botusers = "$server_name"
-    args.admins = "@johndoe:$server_name"
+    args.botusers = "matrix.domain.tld"
+    args.admins = "@johndoe:matrix.domain.tld"
