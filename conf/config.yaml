@@ -1,30 +1,30 @@
 # This is an example file that can be auto-generated at first startup -> rename it supervisor_botadmin
-access_token: "{{ access_token }}"
-homeserver: "{{ homeserver }}"
-server_name: "{{ server_name }}"
-public_baseurl: "https://{{ domain }}"
+access_token: "__ACCESS_TOKEN__"
+homeserver: "__HOMESERVER__"
+server_name: "__SERVER_NAME__"
+public_baseurl: "https://__DOMAIN__"
 # ARN-Messager is the Matrix user logged in to the mautrix IM bridges set in relaybot mode
-relaybot_admin: "{{ relaybot_admin }}" 
-bot_name: "{{ botname }}"
-bot_number: "{{ botnumber }}"
+relaybot_admin: "__RELAYBOT_ADMIN__" 
+bot_name: "__BOTNAME__"
+bot_number: "__BOTNUMBER__"
 botusers:
-- "{{ botusers }}"
+- "__BOTUSERS__"
 admins:
-- '{{ admins }}'
+- '__ADMINS__'
 device_id: QBCDGHZRHIU
-device_name: "{{ device_name }}"
-lang: "{{ language }}"
-welcome_message: "{{ welcome_message }}"
-im_bridged: "{{ bridge }}"
+device_name: "__DEVICE_NAME__"
+lang: "__LANGUAGE__"
+welcome_message: "__WELCOME_MESSAGE__"
+im_bridged: "__BRIDGE__"
 whatsapp:
-  bot: '@{{ botname_wa }}:{{ server_name }}'
-  command_prefix: '{{ command_prefix_wa }}'
-  puppet: '@{{ username_template_wa }}[a-z0-9-]+:{{ server_name }}$'
+  bot: '@__BOTNAME_WA__:__SERVER_NAME__'
+  command_prefix: '__COMMAND_PREFIX_WA__'
+  puppet: '@__USERNAME_TEMPLATE_WA__[a-z0-9-]+:__SERVER_NAME__$'
 signal:
-  bot: '@{{ botname_sg }}:{{ server_name }}'
-  command_prefix: '{{ command_prefix_sg }}'
-  puppet: '@{{ username_template_sg }}[a-z0-9-]+:{{ server_name }}$'
+  bot: '@__BOTNAME_SG__:__SERVER_NAME__'
+  command_prefix: '__COMMAND_PREFIX_SG__'
+  puppet: '@__USERNAME_TEMPLATE_SG__[a-z0-9-]+:__SERVER_NAME__$'
 telegram:
-  bot: '@{{ botname_tg }}:{{ server_name }}'
-  command_prefix: '{{ command_prefix_tg }}'
-  puppet: '@{{ username_template_tg }}[a-z0-9-]+:{{ server_name }}$'
+  bot: '@__BOTNAME_TG__:__SERVER_NAME__'
+  command_prefix: '__COMMAND_PREFIX_TG__'
+  puppet: '@__USERNAME_TEMPLATE_TG__[a-z0-9-]+:__SERVER_NAME__$'
