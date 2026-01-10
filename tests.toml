@@ -20,7 +20,7 @@ test_format = 1.0
         botadmin="@johndoe:$server_name"
         botusers="$server_name"
         # We test with mautrix_whatsapp because amd64, arm64 and armhf are available
-        sudo yunohost app list | grep "mautrix_whatsapp" || sudo yunohost app install https://github.com/YunoHost-Apps/mautrix_whatsapp_ynh/ \
+        sudo yunohost app list | grep "mautrix_whatsapp" || sudo yunohost app install -u https://github.com/YunoHost-Apps/mautrix_whatsapp_ynh/tree/testing \
             -a "botadmin=$botadmin&botusers=$botusers" --force
         """
 
@@ -55,9 +55,9 @@ test_format = 1.0
         botadmin="@johndoe:$server_name"
         botusers="$server_name"
         # We test with mautrix_whatsapp because amd64, arm64 and armhf are available
-        sudo yunohost app list | grep "mautrix_whatsapp" || sudo yunohost app install https://github.com/YunoHost-Apps/mautrix_whatsapp_ynh/ \
+        sudo yunohost app list | grep "mautrix_whatsapp" || sudo yunohost app install -u https://github.com/YunoHost-Apps/mautrix_whatsapp_ynh/tree/testing \
             -a "botadmin=$botadmin&botusers=$botusers" --force
-        sudo yunohost app list | grep "mautrix_signal" || sudo yunohost app install https://github.com/YunoHost-Apps/mautrix_signal_ynh/ \
+        sudo yunohost app list | grep "mautrix_signal" || sudo yunohost app install -u https://github.com/YunoHost-Apps/mautrix_signal_ynh/tree/testing \
             -a "botadmin=$botadmin&botusers=$botusers" --force
         """
 
