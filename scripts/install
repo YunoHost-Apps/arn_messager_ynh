@@ -67,8 +67,8 @@ python3 -m venv $install_dir
 
 if [ $encryption ]
 	then
-	ynh_exec_as $app $install_dir/bin/python -m pip install python-olm
-	ynh_exec_as $app $install_dir/bin/python -m pip install matrix-nio[e2e]==0.20.1
+	# $install_dir/bin/pip3 install --upgrade pip setuptools wheel
+	$install_dir/bin/pip3 install --upgrade python-olm matrix-nio[e2e]==0.20.1
 fi
 
 ### $install_dir will automatically be initialized with some decent
@@ -89,7 +89,7 @@ ynh_app_setting_set --app="$app" --key=botpassword --value="$botpassword"
 #access_token=$botpassword
 # printf "$botaccount\n$botpassword\n$botpassword\nn" | 
    sudo -u $homeserver $synapse_install_dir/bin/register_new_matrix_user -u $botaccount -p $botpassword -a -c /etc/matrix-$homeserver/homeserver.yaml  || ynh_die "register_new_matrix_user in Synapse failed"
-if ! ynh_in_ci_tests
+if [ ! ynh_in_ci_tests ]
 	then
 	access_token=$(curl '{"type":"m.login.password", "user":"'$botaccount'", "password":"'$botpassword'"}' "http://localhost:$port_synapse_tls/_matrix/client/v3/login")
 	ynh_app_setting_set --app="$app" --key=access_token --value="$access_token"
