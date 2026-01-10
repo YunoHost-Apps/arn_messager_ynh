@@ -85,8 +85,8 @@ chown -R "$app:$app" "$install_dir"
 ynh_script_progression "Get Synapse access token"
 
 # register $botaccount with $botpassword and get $access_token
-botpassword="$(ynh_string_random --length=30)" #find a way to generate a password
-ynh_app_setting_set --app="$app" --key=botpassword --value="$botpassword"
+#botpassword="$(ynh_string_random --length=30)" #find a way to generate a password
+#ynh_app_setting_set --app="$app" --key=botpassword --value="$botpassword"
 #access_token=$botpassword
 
 # https://element-hq.github.io/synapse/latest/admin_api/register_api.html
@@ -109,7 +109,7 @@ ynh_app_setting_set --app="$app" --key=botpassword --value="$botpassword"
 # nonce=$(curl '{"type":"m.login.password", "user":"'$botaccount'", "password":"'$botpassword'"}' "http://localhost:$port_synapse_tls/_synapse/admin/v1/register")
 
 # printf "$botaccount\n$botpassword\n$botpassword\nn" | 
-sudo -u $homeserver $synapse_install_dir/venv/bin/register_new_matrix_user -u $botaccount -p $botpassword -a -c /etc/matrix-$homeserver/homeserver.yaml  || ynh_die "register_new_matrix_user in Synapse failed"
+#sudo -u $homeserver $synapse_install_dir/venv/bin/register_new_matrix_user -u $botaccount -p $botpassword -a -c /etc/matrix-$homeserver/homeserver.yaml  || ynh_die "register_new_matrix_user in Synapse failed"
 if [ ! ynh_in_ci_tests ]
 	then
 	access_token=$(curl '{"type":"m.login.password", "user":"'$botaccount'", "password":"'$botpassword'"}' "http://localhost:$port_synapse_tls/_matrix/client/v3/login")
