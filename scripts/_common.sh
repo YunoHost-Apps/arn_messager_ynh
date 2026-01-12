@@ -24,14 +24,14 @@ set_bridge_config_from_ids() {
 #encryption=$(ynh_app_setting_get --app "mautrix_$bridge" --key encryption)
 #enable_relaybot=$(ynh_app_setting_get --app "mautrix_$bridge" --key enable_relaybot)
 
-#botname_sg='signalbot'
-#botname_tg='telegrambot' # OK see bot_username
-#botname_wa='whatsappbot'
-#username_template_sg='sg_' # modifier mautrix_signal_ynh avec sg_{{.}}
+botname_sg='signalbot'
+botname_tg='telegrambot' # OK see bot_username
+botname_wa='whatsappbot'
+username_template_sg='sg_' # modifier mautrix_signal_ynh avec sg_{{.}}
   # {userid} is replaced with the user ID of the Telegram user.
   #username_template: "telegram_{userid}"
-#username_template_tg='tg_' # modifier mautrix_telegram_ynh avec telegram_{userid}
-#username_template_wa='wa_' # modifier mautrix_whatsapp_ynh avec whatsapp_{{.}}
+username_template_tg='telegram_' # modifier mautrix_telegram_ynh avec telegram_{userid}
+username_template_wa='whatsapp_' # modifier mautrix_whatsapp_ynh avec whatsapp_{{.}}
 # à ajouter au config panel de https://github.com/YunoHost-Apps/mautrix_signal_ynh/blob/master/conf/config.yaml#L31
 command_prefix_sg='!signal'
 # à ajouter au config panel de https://github.com/YunoHost-Apps/mautrix_telegram_ynh/blob/master/conf/config.yaml#L482
