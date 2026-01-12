@@ -115,6 +115,7 @@ if [ ! ynh_in_ci_tests ]
 	access_token=$(curl '{"type":"m.login.password", "user":"'$botaccount'", "password":"'$botpassword'"}' "http://localhost:$port_synapse_tls/_matrix/client/v3/login")
 	ynh_app_setting_set --app="$app" --key=access_token --value="$access_token"
 	else
+	access_token=$botpassword
 	ynh_app_setting_set --app="$app" --key=access_token --value="$botpassword"
 fi
 
@@ -167,11 +168,11 @@ yunohost service add $app --description="$app daemon for bridging Matrix message
 ynh_script_progression "Starting $app's systemd service..."
 
 # Start a systemd service
-if [ ynh_in_ci_tests ]
+if [ ! ynh_in_ci_tests ]
 	then
-	printf "$botpassword\n" | ynh_systemctl --service="$app" --action="start"
-	else
 	ynh_systemctl --service="$app" --action="start"
+	else
+	printf "$botpassword\n" | ynh_systemctl --service="$app" --action="start"
 fi
 
 #=================================================

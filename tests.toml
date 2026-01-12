@@ -19,6 +19,9 @@ test_format = 1.0
         sudo yunohost app install https://github.com/YunoHost-Apps/synapse_ynh -a "domain=$domain&init_main_permission=all_users&server_name=$server_name&is_free_registration=false" --force
         botadmin="@johndoe:$server_name"
         botusers="$server_name"
+        botaccount="arnmessager"
+        botpassword="KianG7EAPXORCNWT"
+        sudo -u $homeserver $synapse_install_dir/venv/bin/register_new_matrix_user -u $botaccount -p $botpassword -a -c /etc/matrix-$homeserver/homeserver.yaml  || ynh_die "register_new_matrix_user in Synapse failed"
         # We test with mautrix_whatsapp because amd64, arm64 and armhf are available
         #sudo yunohost app list | grep "mautrix_whatsapp" || sudo yunohost app install https://github.com/YunoHost-Apps/mautrix_whatsapp_ynh/tree/testing \
         #    -a "botadmin=$botadmin&botusers=$botusers" --force
@@ -55,6 +58,9 @@ test_format = 1.0
         sudo yunohost app install https://github.com/YunoHost-Apps/synapse_ynh -a "domain=$domain&init_main_permission=all_users&server_name=$server_name&is_free_registration=false" --force
         botadmin="@johndoe:$server_name"
         botusers="$server_name"
+        botaccount="arnmessager"
+        botpassword="KianG7EAPXORCNWT"
+        sudo -u $homeserver $synapse_install_dir/venv/bin/register_new_matrix_user -u $botaccount -p $botpassword -a -c /etc/matrix-$homeserver/homeserver.yaml  || ynh_die "register_new_matrix_user in Synapse failed"
         # We test with mautrix_whatsapp because amd64, arm64 and armhf are available
         #sudo yunohost app list | grep "mautrix_whatsapp" || sudo yunohost app install https://github.com/YunoHost-Apps/mautrix_whatsapp_ynh/tree/testing \
         #    -a "botadmin=$botadmin&botusers=$botusers" --force
