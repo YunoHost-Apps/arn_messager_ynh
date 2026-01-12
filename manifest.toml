@@ -56,13 +56,20 @@ ram.runtime = "50M"
     default = "ARN-Messager"
 
     [install.botaccount]
+    ask.en = "Give the local synapse user name for the ARN-Messager bot"
+    ask.fr = "Donnez le nom d'utilisateur synapse local pour le robot ARN-Messager"
+    help.en = "You should create a user before install. Invite @arnmessager:localsynapse.servername from an authorized Matrix account to start bridging. Give the matrix server_name, not the full domain/url."
+    help.fr = "Vous devez créer un utilisateur avant l'installation. Inviter @arnmessager:localsynapse.servername depuis un compte Matrix autorisé pour démarrer une passerelle. Donner le nom du serveur matrix, pas le domaine/url complet."
+    type = "string"
+    example = "arnmessager"
+    default = "arnmessager"
+
+    [install.botpassword]
     ask.en = "Choose a local synapse user name for the ARN-Messager bot"
     ask.fr = "Choisissez un nom d'utilisateur synapse local pour le robot ARN-Messager"
     help.en = "A system user will be created. Invite @arnmessager:localsynapse.servername from an authorized Matrix account to start bridging. Give the matrix server_name, not the full domain/url."
     help.fr = "Un utilisateur système sera créé. Inviter @arnmessager:localsynapse.servername depuis un compte Matrix autorisé pour démarrer une passerelle. Donner le nom du serveur matrix, pas le domaine/url complet."
     type = "string"
-    example = "arnmessager"
-    default = "arnmessager"
 
     [install.botnumber]
     ask.en = "Phone number of the Signal/Whatsapp relay account. Use +33612345678 formatting"
