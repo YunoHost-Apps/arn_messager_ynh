@@ -65,17 +65,12 @@ ynh_setup_source --dest_dir="$install_dir"
 # Install virtualenv
 python3 -m venv $install_dir
 
-if [ $encryption ]
-	then
+if $encryption;	then
 	export HOME=$install_dir
 	$install_dir/bin/pip3 install --upgrade pip setuptools wheel
 	$install_dir/bin/pip3 install --upgrade python-olm matrix-nio[e2e]==0.20.1
 fi
 
-### $install_dir will automatically be initialized with some decent
-### permission by default ... however, you may need to recursively reapply
-### ownership to all files such as after the ynh_setup_source step
-chown -R "$app:$app" "$install_dir"
 
 #=================================================
 # SPECIFIC SETUP
@@ -110,14 +105,12 @@ ynh_script_progression "Get Synapse access token"
 
 # printf "$botaccount\n$botpassword\n$botpassword\nn" | 
 #sudo -u $homeserver $synapse_install_dir/venv/bin/register_new_matrix_user -u $botaccount -p $botpassword -a -c /etc/matrix-$homeserver/homeserver.yaml  || ynh_die "register_new_matrix_user in Synapse failed"
-if [ ! ynh_in_ci_tests ]
-	then
+if ! ynh_in_ci_tests; then
 	access_token=$(curl '{"type":"m.login.password", "user":"'$botaccount'", "password":"'$botpassword'"}' "http://localhost:$port_synapse_tls/_matrix/client/v3/login")
-	ynh_app_setting_set --app="$app" --key=access_token --value="$access_token"
-	else
+else
 	access_token=$botpassword
-	ynh_app_setting_set --app="$app" --key=access_token --value="$botpassword"
 fi
+ynh_app_setting_set --app="$app" --key=access_token --value="$access_token"
 
 #Prompt to answer 
 #New user localpart: $botaccount
@@ -138,6 +131,7 @@ ynh_config_add --template="config.yaml" --destination="$install_dir/config.yaml"
 #set__listuser
 #set__listadmin
 
+chown -R "$app:$app" "$install_dir"
 
 #=================================================
 # SETUP SYSTEMD
@@ -168,10 +162,9 @@ yunohost service add $app --description="$app daemon for bridging Matrix message
 ynh_script_progression "Starting $app's systemd service..."
 
 # Start a systemd service
-if [ ! ynh_in_ci_tests ]
-	then
+if ! ynh_in_ci_tests; then
 	ynh_systemctl --service="$app" --action="start"
-	else
+else
 	printf "$botpassword\n" | ynh_systemctl --service="$app" --action="start"
 fi
 

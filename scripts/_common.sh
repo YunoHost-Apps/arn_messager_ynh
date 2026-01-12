@@ -69,8 +69,7 @@ apply_permissions() {
     newValues="${newValues//\"}"
     usersArray=(${newValues//,/ }) # Split the values using comma (,) as separator.
 
-    if [ -n "$newValues" ]
-    then
+    if [ -n "$newValues" ]; then
         #ynh_systemctl --service="$app" --action=stop
         # Get all entries between "permissions:" and "relay:" keys, remove the role part, remove commented parts, format it with newlines and clean whitespaces and double quotes.
         allDefinedEntries=$(awk '/permissions:/{flag=1; next} /relay:/{flag=0} flag' "$install_dir/config.yaml" | sed "/: $role/d" | sed -r 's/: (admin|user|relay)//' | tr -d '[:blank:]' | sed '/^#/d' | tr -d '\"' | tr ',' '\n' )
