@@ -2,7 +2,7 @@
 
 packaging_format = 2
 
-id = "arnmessager"
+id = "arn_messager"
 name = "ARN-Messager"
 description.en = "ARN-Messager is a bot which enables multiple Matrix users to use a single IM account over Mautrix bridges."
 description.fr = "ARN-Messager est un robot qui permet à plusieurs comptes Matrix de mutualiser un unique compte de messagerie instantanée tierce via les bridges Mautrix."
