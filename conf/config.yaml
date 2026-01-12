@@ -12,7 +12,6 @@ botusers:
 admins:
 - '__ADMINS__'
 device_id: QBCDGHZRHIU
-device_name: "__DEVICE_NAME__"
 lang: "__LANGUAGE__"
 welcome_message: "__WELCOME_MESSAGE__"
 im_bridged: "__BRIDGE__"
