@@ -64,11 +64,13 @@ ynh_setup_source --dest_dir="$install_dir"
 
 # Install virtualenv
 python3 -m venv $install_dir
+export HOME=$install_dir
+$install_dir/bin/pip3 install --upgrade pip setuptools wheel
 
 if [ "$encryption" -eq "1" ];	then
-	export HOME=$install_dir
-	$install_dir/bin/pip3 install --upgrade pip setuptools wheel
-	$install_dir/bin/pip3 install --upgrade python-olm matrix-nio[e2e]==0.20.1
+	$install_dir/bin/pip3 install -r requirements_e2b.txt
+else
+	$install_dir/bin/pip3 install -r requirements.txt
 fi
 
 #=================================================
