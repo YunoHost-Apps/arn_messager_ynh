@@ -1,19 +1,19 @@
 # This is an example file that can be auto-generated at first startup -> rename it supervisor_botadmin
-homeserver: "__HOMESERVER__"
-server_name: "__SERVER_NAME__"
-public_baseurl: "https://__DOMAIN__"
+homeserver: __HOMESERVER__
+server_name: __SERVER_NAME__
+public_baseurl: https://__DOMAIN__
 # ARN-Messager is the Matrix user logged in to the mautrix IM bridges set in relaybot mode
-relaybot_admin: "__RELAYBOT_ADMIN__" 
-botpassword: "__BOTPASSWORD__"
-bot_name: "__BOTNAME__"
-bot_number: "__BOTNUMBER__"
+relaybot_admin: __RELAYBOT_ADMIN__
+botpassword: __BOTPASSWORD__
+bot_name: __BOTNAME__
+bot_number: __BOTNUMBER__
 botusers:
-- "__BOTUSERS__"
+- __BOTUSERS__
 admins:
 - '__ADMINS__'
-lang: "__LANGUAGE__"
-welcome_message: "__WELCOME_MESSAGE__"
-im_bridged: "__BRIDGE__"
+lang: __LANGUAGE__
+welcome_message: __WELCOME_MESSAGE__
+im_bridged: __BRIDGE__
 whatsapp:
   bot: '@__BOTNAME_WA__:__SERVER_NAME__'
   command_prefix: '__COMMAND_PREFIX_WA__'
