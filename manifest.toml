@@ -144,4 +144,3 @@ ram.runtime = "50M"
     [resources.install_dir]
 
     [resources.apt]
-    packages = "python3-venv, python3-pip, python3-wheel, python3-yaml, python3-dnspython, python3-matrix-nio"

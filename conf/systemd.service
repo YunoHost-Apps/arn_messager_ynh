@@ -7,7 +7,7 @@ Type=simple
 User=__APP__
 Group=__APP__
 WorkingDirectory=__INSTALL_DIR__/
-ExecStart=__INSTALL_DIR__/bin/python3 __INSTALL_DIR__/arn-messager.py -vv -c=__INSTALL_DIR__/config.yaml
+ExecStart=__INSTALL_DIR__/bin/python3 __INSTALL_DIR__/arn-messager.py -vv -c=config.yaml
 StandardOutput=append:/var/log/__APP__/__APP__.log
 StandardError=inherit
 
