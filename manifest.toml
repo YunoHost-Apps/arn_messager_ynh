@@ -65,10 +65,10 @@ ram.runtime = "50M"
     default = "arnmessager"
 
     [install.botpassword]
-    ask.en = "Choose a local synapse user name for the ARN-Messager bot"
-    ask.fr = "Choisissez un nom d'utilisateur synapse local pour le robot ARN-Messager"
-    help.en = "A system user will be created. Invite @arnmessager:localsynapse.servername from an authorized Matrix account to start bridging. Give the matrix server_name, not the full domain/url."
-    help.fr = "Un utilisateur système sera créé. Inviter @arnmessager:localsynapse.servername depuis un compte Matrix autorisé pour démarrer une passerelle. Donner le nom du serveur matrix, pas le domaine/url complet."
+    ask.en = "Give the password for the ARN-Messager bot"
+    ask.fr = "Donnez le mot-de-passe pour le robot ARN-Messager"
+    help.en = "You should create a user before install."
+    help.fr = "Vous devez créer un utilisateur avant l'installation."
     type = "string"
 
     [install.botnumber]
@@ -130,7 +130,7 @@ ram.runtime = "50M"
     #extract = false
     #rename = "mautrix-whatsapp"
     url = "https://code.ffdn.org/arn/arn-messager/-/archive/testing/arn-messager-testing.tar.gz"
-    sha256 = "3743041eac32b58f1d21d0a316bc422677709c66be056b0c0c52c835304828ee"
+    sha256 = "1ef446d8ef71df86a3f1b8d155ac9273a6b2dd740de5561f4d41bb6ad9b54949"
 
     # These infos are used by https://github.com/YunoHost/apps/blob/master/tools/autoupdate_app_sources/autoupdate_app_sources.py
     # to auto-update the previous asset urls and sha256sum + manifest version

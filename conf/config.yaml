@@ -3,7 +3,8 @@ homeserver: __HOMESERVER__
 server_name: __SERVER_NAME__
 public_baseurl: https://__DOMAIN__
 # ARN-Messager is the Matrix user logged in to the mautrix IM bridges set in relaybot mode
-relaybot_admin: __RELAYBOT_ADMIN__
+relaybot_admin: '__RELAYBOT_ADMIN__'
+access_token:
 botpassword: __BOTPASSWORD__
 bot_name: __BOTNAME__
 bot_number: __BOTNUMBER__
@@ -11,6 +12,8 @@ botusers:
 - __BOTUSERS__
 admins:
 - '__ADMINS__'
+device_id: QBCDGHZRHIU
+device_name: QSDGZETEZ
 lang: __LANGUAGE__
 welcome_message: __WELCOME_MESSAGE__
 im_bridged: __BRIDGE__
