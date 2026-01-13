@@ -4,17 +4,17 @@ It shall NOT be edited by hand.
 -->
 
 <h1>
-  <img src="https://raw.githubusercontent.com/YunoHost/apps/main/logos/arnmessager.png" width="32px" alt="Logo of ARN-Messager">
+  <img src="https://raw.githubusercontent.com/YunoHost/apps/main/logos/arn_messager.png" width="32px" alt="Logo of ARN-Messager">
   ARN-Messager, packaged for YunoHost
 </h1>
 
 ARN-Messager is a bot which enables multiple Matrix users to use a single IM account over Mautrix bridges.
 
-[![Version: 1.2~ynh1](https://img.shields.io/badge/Version-1.2~ynh1-rgb(18,138,11)?style=for-the-badge)](https://ci-apps.yunohost.org/ci/apps/arnmessager/)
+[![Version: 1.2~ynh1](https://img.shields.io/badge/Version-1.2~ynh1-rgb(18,138,11)?style=for-the-badge)](https://ci-apps.yunohost.org/ci/apps/arn_messager/)
 
 <div align="center">
-<a href="https://apps.yunohost.org/app/arnmessager"><img height="100px" src="https://github.com/YunoHost/yunohost-artwork/raw/refs/heads/main/badges/neopossum-badges/badge_more_info_on_the_appstore.svg"/></a>
-<a href="https://github.com/YunoHost-Apps/arnmessager_ynh/issues"><img height="100px" src="https://github.com/YunoHost/yunohost-artwork/raw/refs/heads/main/badges/neopossum-badges/badge_report_an_issue.svg"/></a>
+<a href="https://apps.yunohost.org/app/arn_messager"><img height="100px" src="https://github.com/YunoHost/yunohost-artwork/raw/refs/heads/main/badges/neopossum-badges/badge_more_info_on_the_appstore.svg"/></a>
+<a href="https://github.com/YunoHost-Apps/arn_messager_ynh/issues"><img height="100px" src="https://github.com/YunoHost/yunohost-artwork/raw/refs/heads/main/badges/neopossum-badges/badge_report_an_issue.svg"/></a>
 </div>
 
 
@@ -23,19 +23,19 @@ ARN-Messager is a bot which enables multiple Matrix users to use a single IM acc
 
 ## 📦 Developer info
 
-[![Automatic tests level](https://apps.yunohost.org/badge/cilevel/arnmessager)](https://ci-apps.yunohost.org/ci/apps/arnmessager/)
+[![Automatic tests level](https://apps.yunohost.org/badge/cilevel/arn_messager)](https://ci-apps.yunohost.org/ci/apps/arn_messager/)
 
 🛠️ Upstream ARN-Messager repository: <https://code.ffdn.org/arn/arn-messager>
 
-Pull request are welcome and should target the [`testing` branch](https://github.com/YunoHost-Apps/arnmessager_ynh/tree/testing).
+Pull request are welcome and should target the [`testing` branch](https://github.com/YunoHost-Apps/arn_messager_ynh/tree/testing).
 
 The `testing` branch can be tested using:
 ```
 # fresh install:
-sudo yunohost app install https://github.com/YunoHost-Apps/arnmessager_ynh/tree/testing
+sudo yunohost app install https://github.com/YunoHost-Apps/arn_messager_ynh/tree/testing
 
 # upgrade an existing install:
-sudo yunohost app upgrade arnmessager -u https://github.com/YunoHost-Apps/arnmessager_ynh/tree/testing
+sudo yunohost app upgrade arn_messager -u https://github.com/YunoHost-Apps/arn_messager_ynh/tree/testing
 ```
 
 ### 📚 App packaging documentation
