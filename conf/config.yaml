@@ -1,5 +1,4 @@
 # This is an example file that can be auto-generated at first startup -> rename it supervisor_botadmin
-access_token: "__ACCESS_TOKEN__"
 homeserver: "__HOMESERVER__"
 server_name: "__SERVER_NAME__"
 public_baseurl: "https://__DOMAIN__"
@@ -11,7 +10,6 @@ botusers:
 - "__BOTUSERS__"
 admins:
 - '__ADMINS__'
-device_id: QBCDGHZRHIU
 lang: "__LANGUAGE__"
 welcome_message: "__WELCOME_MESSAGE__"
 im_bridged: "__BRIDGE__"

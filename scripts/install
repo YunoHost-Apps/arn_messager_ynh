@@ -71,56 +71,6 @@ if [ "$encryption" -eq "1" ];	then
 	$install_dir/bin/pip3 install --upgrade python-olm matrix-nio[e2e]==0.20.1
 fi
 
-
-#=================================================
-# SPECIFIC SETUP
-#=================================================
-# REGISTER SYNAPSE USER AND GET ACCESS TOKEN
-#=================================================
-ynh_script_progression "Get Synapse access token"
-
-# register $botaccount with $botpassword and get $access_token
-#botpassword="$(ynh_string_random --length=30)" #find a way to generate a password
-#ynh_app_setting_set --app="$app" --key=botpassword --value="$botpassword"
-#access_token=$botpassword
-
-# https://element-hq.github.io/synapse/latest/admin_api/register_api.html
-
-# > GET /_synapse/admin/v1/register
-
-# < {"nonce": "thisisanonce"}
-
-# # Update these values and then paste this code block into a bash terminal
-# nonce='thisisanonce'
-# username='pepper_roni'
-# password='pizza'
-# admin='admin'
-# secret='shared_secret'
-
-# printf '%s\0%s\0%s\0%s' "$nonce" "$username" "$password" "$admin" |
-#   openssl sha1 -hmac "$secret" |
-#   awk '{print $2}'
-
-# nonce=$(curl '{"type":"m.login.password", "user":"'$botaccount'", "password":"'$botpassword'"}' "http://localhost:$port_synapse_tls/_synapse/admin/v1/register")
-
-# printf "$botaccount\n$botpassword\n$botpassword\nn" | 
-#sudo -u $homeserver $synapse_install_dir/venv/bin/register_new_matrix_user -u $botaccount -p $botpassword -a -c /etc/matrix-$homeserver/homeserver.yaml  || ynh_die "register_new_matrix_user in Synapse failed"
-if ! ynh_in_ci_tests; then
-	escaped_botpassword=$(jq -Rr '@json' <<< "$botpassword") # Escaped password with ""
-	echo $escaped_botpassword
-	access_token=$(curl -g "{\"type\":\"m.login.password\", \"user\":\"$botaccount\", \"password\":$botpassword}" "http://localhost:$port_synapse_tls/_matrix/client/v3/login")
-else
-	access_token=$botpassword
-fi
-ynh_app_setting_set --key=access_token --value=$access_token
-
-#Prompt to answer 
-#New user localpart: $botaccount
-#Password: $botpassword
-#Confirm password: $botpassword
-#Make admin [no]:
-#Success!
-
 #=================================================
 # ADD A CONFIGURATION
 #=================================================
@@ -163,12 +113,8 @@ yunohost service add $app --description="$app daemon for bridging Matrix message
 #=================================================
 ynh_script_progression "Starting $app's systemd service..."
 
-# Start a systemd service
-if ! ynh_in_ci_tests; then
-	ynh_systemctl --service="$app" --action="start"
-else
-	printf "$botpassword\n" | ynh_systemctl --service="$app" --action="start"
-fi
+# Start a systemd service and pass password to get access_token
+printf "$botpassword\n" | ynh_systemctl --service="$app" --action="start"
 
 #=================================================
 # END OF SCRIPT
