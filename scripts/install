@@ -68,9 +68,9 @@ export HOME=$install_dir
 $install_dir/bin/pip3 install --upgrade pip setuptools wheel
 
 if [ "$encryption" -eq "1" ];	then
-	$install_dir/bin/pip3 install -r requirements_e2b.txt
+	$install_dir/bin/pip3 install -r $install_dir/requirements_e2b.txt
 else
-	$install_dir/bin/pip3 install -r requirements.txt
+	$install_dir/bin/pip3 install -r $install_dir/requirements.txt
 fi
 
 #=================================================
