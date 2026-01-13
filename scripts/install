@@ -106,7 +106,7 @@ ynh_script_progression "Get Synapse access token"
 # printf "$botaccount\n$botpassword\n$botpassword\nn" | 
 #sudo -u $homeserver $synapse_install_dir/venv/bin/register_new_matrix_user -u $botaccount -p $botpassword -a -c /etc/matrix-$homeserver/homeserver.yaml  || ynh_die "register_new_matrix_user in Synapse failed"
 if ! ynh_in_ci_tests; then
-	access_token=$(curl '{"type":"m.login.password", "user":"'$botaccount'", "password":"'$botpassword'"}' "http://localhost:$port_synapse_tls/_matrix/client/v3/login")
+	access_token=$(curl "{\"type\":\"m.login.password\", \"user\":\"$botaccount\", \"password\":\"$botpassword\"}" "http://localhost:$port_synapse_tls/_matrix/client/v3/login")
 else
 	access_token=$botpassword
 fi
