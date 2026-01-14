@@ -4,20 +4,18 @@ packaging_format = 2
 
 id = "arn_messager"
 name = "ARN-Messager"
-description.en = "ARN-Messager is a bot which enables multiple Matrix users to use a single IM account over Mautrix bridges."
-description.fr = "ARN-Messager est un robot qui permet à plusieurs comptes Matrix de mutualiser un unique compte de messagerie instantanée tierce via les bridges Mautrix."
+description.en = "Bot which enables multiple Matrix users to use a single IM account over Mautrix bridges."
+description.fr = "Robot qui permet à plusieurs comptes Matrix de mutualiser un unique compte de messagerie instantanée tierce via les bridges Mautrix."
 
 version = "1.2~ynh1"
 
 maintainers = ["Gredin67","zamentur","Thatoo"]
 
 [upstream]
-# NB: Only the "license" key is mandatory. Remove entries for which there's no relevant data
-license = "AGPL-3.0-or-later" # you can see the available licenses identifiers list here: https://spdx.org/licenses/
+license = "AGPL-3.0-or-later"
 admindoc = "https://code.ffdn.org/arn/arn-messager#configuration-file"
 userdoc = "https://arn-fai.net/fr/blog/arn-messager-contact-whatsapp-sans-donner-facebook#mise-en-pratique-de-darn-messager"
 code = "https://code.ffdn.org/arn/arn-messager"
-
 fund = "https://don.arn-fai.net/"
 
 [integration]
@@ -25,8 +23,10 @@ yunohost = ">= 12.1.17"
 helpers_version = "2.1"
 architectures = ["amd64", "arm64", "armhf"]
 multi_instance = false
+
 ldap = "not_relevant"
 sso = "not_relevant"
+
 disk = "50M"
 ram.build = "50M"
 ram.runtime = "50M"
@@ -115,10 +115,7 @@ ram.runtime = "50M"
     help.fr = "A activer si une des passerelles relai utilise E2B."
     default = false
 
-
 [resources]
-    # See the packaging documentation for the full set
-    # of explanation regarding the behavior and properties for each of those
 
     [resources.sources]
 
@@ -131,12 +128,6 @@ ram.runtime = "50M"
     #rename = "mautrix-whatsapp"
     url = "https://code.ffdn.org/arn/arn-messager/-/archive/testing/arn-messager-testing.tar.gz"
     sha256 = "1ef446d8ef71df86a3f1b8d155ac9273a6b2dd740de5561f4d41bb6ad9b54949"
-
-    # These infos are used by https://github.com/YunoHost/apps/blob/master/tools/autoupdate_app_sources/autoupdate_app_sources.py
-    # to auto-update the previous asset urls and sha256sum + manifest version
-    # assuming the upstream's code repo is on github and relies on tags or releases
-    # See the 'sources' resource documentation for more details
-
     autoupdate.strategy = "latest_gitlab_release"
 
     [resources.system_user]

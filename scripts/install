@@ -20,7 +20,6 @@ ynh_app_setting_set --key=server_name --value=$server_name
 ynh_app_setting_set --key=domain --value=$domain
 ynh_app_setting_set --key=port_synapse_tls --value=$port_synapse_tls
 
-
 #=================================================
 # SET STANDARD SETTINGS FROM DEFAULT CONFIG
 #=================================================
@@ -95,20 +94,10 @@ ynh_script_progression "Configuring $app's systemd service..."
 # Create a dedicated systemd config
 ynh_config_add_systemd
 
-#=================================================
-# SETUP LOGROTATE
-#=================================================
-ynh_script_progression "Configuring log rotation..."
+yunohost service add $app --description="$app daemon for bridging Matrix messages with a shared WhatsApp&Signal&Co account" --log="/var/log/$app/$app.log"
 
 # Use logrotate to manage application logfile(s)
-ynh_config_add_logrotate "/var/log/$app/$app.log" $app/$app
-
-#=================================================
-# INTEGRATE SERVICE IN YUNOHOST
-#=================================================
-ynh_script_progression "Integrating service in YunoHost..."
-
-yunohost service add $app --description="$app daemon for bridging Matrix messages with a shared WhatsApp&Signal&Co account" --log="/var/log/$app/$app.log"
+ynh_config_add_logrotate
 
 #=================================================
 # START SYSTEMD SERVICE
@@ -121,4 +110,5 @@ ynh_systemctl --service="$app" --action="start"
 #=================================================
 # END OF SCRIPT
 #=================================================
+
 ynh_script_progression "Installation of $app completed"
