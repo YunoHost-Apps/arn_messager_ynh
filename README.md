@@ -10,7 +10,7 @@ It shall NOT be edited by hand.
 
 Bot which enables multiple Matrix users to use a single IM account over Mautrix bridges.
 
-[![Version: 1.1.0~ynh1](https://img.shields.io/badge/Version-1.1.0~ynh1-rgb(18,138,11)?style=for-the-badge)](https://ci-apps.yunohost.org/ci/apps/arn_messager/)
+[![Version: 1.2~ynh1](https://img.shields.io/badge/Version-1.2~ynh1-rgb(18,138,11)?style=for-the-badge)](https://ci-apps.yunohost.org/ci/apps/arn_messager/)
 
 <div align="center">
 <a href="https://apps.yunohost.org/app/arn_messager"><img height="100px" src="https://github.com/YunoHost/yunohost-artwork/raw/refs/heads/main/badges/neopossum-badges/badge_more_info_on_the_appstore.svg"/></a>
