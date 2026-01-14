@@ -8,7 +8,7 @@ It shall NOT be edited by hand.
   ARN-Messager, packaged for YunoHost
 </h1>
 
-ARN-Messager is a bot which enables multiple Matrix users to use a single IM account over Mautrix bridges.
+Bot which enables multiple Matrix users to use a single IM account over Mautrix bridges.
 
 [![Version: 1.2~ynh1](https://img.shields.io/badge/Version-1.2~ynh1-rgb(18,138,11)?style=for-the-badge)](https://ci-apps.yunohost.org/ci/apps/arn_messager/)
 
