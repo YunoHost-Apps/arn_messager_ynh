@@ -7,7 +7,7 @@ name = "ARN-Messager"
 description.en = "Bot which enables multiple Matrix users to use a single IM account over Mautrix bridges."
 description.fr = "Robot qui permet à plusieurs comptes Matrix de mutualiser un unique compte de messagerie instantanée tierce via les bridges Mautrix."
 
-version = "1.2~ynh1"
+version = "1.1.0~ynh1"
 
 maintainers = ["Gredin67","zamentur","Thatoo"]
 
@@ -123,8 +123,8 @@ ram.runtime = "50M"
     #in_subdir = false
     #extract = false
     #rename = "mautrix-whatsapp"
-    url = "https://code.ffdn.org/arn/arn-messager/-/archive/testing/arn-messager-testing.tar.gz"
-    sha256 = "7604fb105f3c3983c5d53db46f9e753022837360d81ee1de0db533ee56204a14"
+    url = "https://code.ffdn.org/arn/arn-messager/-/archive/1.1.0/arn-messager-1.1.0.tar.gz"
+    sha256 = "933e517fe02595bf44b0978391fb464ba988b4c40679da29b7b9cb125f567513"
     autoupdate.strategy = "latest_gitlab_release"
 
     [resources.system_user]
