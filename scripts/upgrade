@@ -40,11 +40,11 @@ ynh_config_add --template="config.yaml" --destination="$install_dir/config.yaml"
 #=================================================
 ynh_script_progression "Upgrading system configurations related to $app..."
 
-ynh_add_systemd_config
+ynh_config_add_systemd
 
 yunohost service add "$app" --description="Robot ARN-Messager" --log="/var/log/$app/$app.log"
 
-ynh_use_logrotate --non-append
+ynh_config_add_logrotate
 
 #=================================================
 # START SYSTEMD SERVICE
