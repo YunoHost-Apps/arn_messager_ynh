@@ -33,7 +33,7 @@ chown -R "$app:$app" "$install_dir"
 #=================================================
 ynh_script_progression "Updating $app's configuration files..."
 
-ynh_add_config --template="config.yaml" --destination="$install_dir/config.yaml"
+ynh_config_add --template="config.yaml" --destination="$install_dir/config.yaml"
 
 #=================================================
 # REAPPLY SYSTEM CONFIGURATIONS
