@@ -20,7 +20,7 @@ ynh_systemctl --service="$app" --action="stop"
 ynh_script_progression "Upgrading source files..."
 
 # Download, check integrity, uncompress and patch the source from manifest.toml
-ynh_setup_source --dest_dir="$install_dir"
+ynh_setup_source --dest_dir="$install_dir" --keep="config.yaml"
 
 # Install virtualenv
 python3 -m venv $install_dir
@@ -31,9 +31,9 @@ chown -R "$app:$app" "$install_dir"
 #=================================================
 # UPDATE A CONFIG FILE
 #=================================================
-ynh_script_progression "Updating $app's configuration files..."
+#ynh_script_progression "Updating $app's configuration files..."
 
-ynh_config_add --template="config.yaml" --destination="$install_dir/config.yaml"
+#ynh_config_add --template="config.yaml" --destination="$install_dir/config.yaml"
 
 #=================================================
 # REAPPLY SYSTEM CONFIGURATIONS
