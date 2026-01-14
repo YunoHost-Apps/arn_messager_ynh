@@ -17,10 +17,6 @@ Bot which enables multiple Matrix users to use a single IM account over Mautrix 
 <a href="https://github.com/YunoHost-Apps/arn_messager_ynh/issues"><img height="100px" src="https://github.com/YunoHost/yunohost-artwork/raw/refs/heads/main/badges/neopossum-badges/badge_report_an_issue.svg"/></a>
 </div>
 
-
-## Screenshots
-![Screenshot of ARN-Messager](./doc/screenshots/example.jpg)
-
 ## 📦 Developer info
 
 [![Automatic tests level](https://apps.yunohost.org/badge/cilevel/arn_messager)](https://ci-apps.yunohost.org/ci/apps/arn_messager/)
