@@ -45,7 +45,7 @@ ynh_script_progression "Upgrading system configurations related to $app..."
 
 ynh_add_systemd_config
 
-yunohost service add "$app" --description="ARN Messager" --log="/var/log/$app/$app.log"
+yunohost service add "$app" --description="Robot ARN-Messager" --log="/var/log/$app/$app.log"
 
 ynh_use_logrotate --non-append
 
