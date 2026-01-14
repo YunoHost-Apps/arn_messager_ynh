@@ -1,0 +1,69 @@
+#:schema https://raw.githubusercontent.com/YunoHost/apps/master/schemas/config_panel.v1.schema.json
+
+version = "1.0"
+
+[main]
+name.en = "Main configuration"
+name.fr = "Configuration principale"
+services = ["__APP__"]
+
+    [main.permissions]
+    name = "Permissions for ARN-Messager Bot"
+
+        [main.permissions.helptext]
+        ask = '''
+        Roles with Increasing Power: User<Admin
+        Allowed values for roles:
+        - * : All Matrix users
+        - domain.tld : All users on a given homeserver
+        - mxid (@user:matrix.org) : Specific Matrix user
+        '''
+        type = "markdown"
+
+        [main.permissions.listuser]
+        ask = "Bot Users"
+        type = "tags"
+        help = "User Role: Access to use the ARN-Messager Bot to bridge new rooms via Mautrix Bridges."
+
+        [main.permissions.listadmin]
+        ask = "Bot Administrators"
+        type = "tags"
+        help = "Admin Role: User level and permission to send administration commands to the Mautrix Bridges over the ARN-Messager Bot."
+
+    [main.synapse]
+
+    [main.bridge]
+    name = "Puppetting Bridges Settings"
+
+        [main.bridge.im_bridged]
+        ask = "Which Mautrix Bridge to use?"
+        type = "tags"
+        help = "List the YunoHost Application ID of the Mautrix Bridges, e.g. mautrix_whatsapp ."
+        bind = ":__INSTALL_DIR__/config.yaml"
+
+    [main.bot]
+    name = "ARN-Messager Bot Settings"
+
+        [main.bot.bot_name]
+        ask = "Username of the ARN-Messager Bot"
+        type = "string"
+        help = "Sets bot username, e.g. ARN-Messager"
+        bind = ":__INSTALL_DIR__/config.yaml"
+
+        [main.bot.bot_number]
+        ask = "Phone number of the ARN-Messager Bot"
+        type = "string"
+        help = "Sets bot phone number, e.g. '+33601010101'"
+        bind = ":__INSTALL_DIR__/config.yaml"
+
+        [main.bot.lang]
+        ask = "Language of the ARN-Messager Bot"
+        type = "string"
+        help = "Should be in format 'fr_FR' or 'en_US'"
+        bind = ":__INSTALL_DIR__/config.yaml"
+
+        [main.bot.welcome_message]
+        ask = "Welcome message to send in the bridged IM group?"
+        type = "string"
+        help = "Message to send in the bridged IM group when adding ARN-Messager Bot number."
+        bind = ":__INSTALL_DIR__/config.yaml"
