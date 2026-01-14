@@ -51,7 +51,8 @@ ynh_use_logrotate --non-append
 #=================================================
 ynh_script_progression "Starting $app's systemd service..."
 
-printf "$botpassword\n" | ynh_systemctl --service="$app" --action="start"
+#printf "$botpassword\n" | 
+ynh_systemctl --service="$app" --action="start"
 
 #=================================================
 # END OF SCRIPT
