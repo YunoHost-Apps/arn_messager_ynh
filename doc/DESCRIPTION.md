@@ -1,1 +1,1 @@
-This is a dummy description of this app features
+ARN Messager is a bot to use in addition of mautrix to allow matrix users without administration right to be connected with a whatsapp group.
