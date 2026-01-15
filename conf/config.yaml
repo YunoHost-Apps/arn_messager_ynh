@@ -5,18 +5,17 @@ public_baseurl: https://__DOMAIN__
 # ARN-Messager is the Matrix user logged in to the mautrix IM bridges set in relaybot mode
 relaybot_admin: '__RELAYBOT_ADMIN__'
 access_token:
-botpassword: __BOTPASSWORD__
-bot_name: __BOTNAME__
-bot_number: __BOTNUMBER__
-botusers:
-- __BOTUSERS__
+bot_password: __BOT_PASSWORD__
+bot_name: __BOT_NAME__
+bot_number: __BOT_NUMBER__
+bot_users:
+- __BOT_USERS__
 admins:
 - '__ADMINS__'
-device_id: QBCDGHZRHIU
-device_name: QSDGZETEZ
-lang: __LANGUAGE__
+device_id: __DEVICE_ID__
+device_name: __DEVICE_NAME__
+lang: __LANG__
 welcome_message: __WELCOME_MESSAGE__
-im_bridged: __BRIDGE__
 whatsapp:
   bot: '@__BOTNAME_WA__:__SERVER_NAME__'
   command_prefix: '__COMMAND_PREFIX_WA__'
