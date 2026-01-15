@@ -39,22 +39,24 @@ command_prefix_tg='!tg'
 # à ajouter au config panel de https://github.com/YunoHost-Apps/mautrix_whatsapp_ynh/blob/master/conf/config.yaml#L314
 command_prefix_wa='!wa'
 
-# TODO handle im_bridged array
-if [ "$bridge" == "mautrix_signal" ]; then
-	botname_sg=$(ynh_app_setting_get --app $bridge --key botname)
-	#command_prefix_sg=$(ynh_app_setting_get --app $bridge --key command_prefix)
-	username_template_sg=$(ynh_app_setting_get --app $bridge --key username_template) | sed 's/{{.}}//'
-fi
-if [ "$bridge" == "mautrix_telegram" ]; then
-	botname_tg=$(ynh_app_setting_get --app $bridge --key botname)
-	#command_prefix_tg=$(ynh_app_setting_get --app $bridge --key command_prefix)
-	username_template_tg=$(ynh_app_setting_get --app $bridge --key username_template) | sed 's/{{.}}//'
-fi
-if [ "$bridge" == "mautrix_whatsapp" ]; then
-	botname_wa=$(ynh_app_setting_get --app $bridge --key botname)
-	#command_prefix_wa=$(ynh_app_setting_get --app $bridge --key command_prefix)
-	username_template_wa=$(ynh_app_setting_get --app $bridge --key username_template) | sed 's/{{.}}//'
-fi
+for b in ${bridge//,/ }
+do
+	if [ "$b" == "mautrix_signal"* ]; then
+		botname_sg=$(ynh_app_setting_get --app $b --key botname)
+		#command_prefix_sg=$(ynh_app_setting_get --app $b --key command_prefix)
+		username_template_sg=$(ynh_app_setting_get --app $b --key username_template) | sed 's/{{.}}//'
+	fi
+	if [ "$b" == "mautrix_telegram"* ]; then
+		botname_tg=$(ynh_app_setting_get --app $b --key botname)
+		#command_prefix_tg=$(ynh_app_setting_get --app $b --key command_prefix)
+		username_template_tg=$(ynh_app_setting_get --app $b --key username_template) | sed 's/{{.}}//'
+	fi
+	if [ "$b" == "mautrix_whatsapp"* ]; then
+		botname_wa=$(ynh_app_setting_get --app $b --key botname)
+		#command_prefix_wa=$(ynh_app_setting_get --app $b --key command_prefix)
+		username_template_wa=$(ynh_app_setting_get --app $b --key username_template) | sed 's/{{.}}//'
+	fi
+done
 
 }
 
