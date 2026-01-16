@@ -36,7 +36,7 @@ if [ "$admins" == "@admin:domain.tld" ]; then
 	admins="@admin:$server_name"
 fi
 
-relaybot_admin="@$botaccount:$server_name" 
+relaybot_admin="@$bot_account:$server_name" 
 welcome_message="ask_portal_admin"
 
 ynh_app_setting_set --key=bot_users --value=$bot_users
