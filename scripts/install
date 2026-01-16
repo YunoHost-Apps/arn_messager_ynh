@@ -28,7 +28,7 @@ ynh_app_setting_set --key=port_synapse_tls --value=$port_synapse_tls
 # SET STANDARD SETTINGS FROM DEFAULT CONFIG
 #=================================================
 
-if [ "$botusers" == "domain.tld" ]; then
+if [ "$bot_users" == "domain.tld" ]; then
 	bot_users="$server_name"
 fi
 
