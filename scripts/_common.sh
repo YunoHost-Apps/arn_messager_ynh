@@ -39,7 +39,7 @@ command_prefix_tg='!tg'
 # à ajouter au config panel de https://github.com/YunoHost-Apps/mautrix_whatsapp_ynh/blob/master/conf/config.yaml#L314
 command_prefix_wa='!wa'
 
-for b in ${bridge//,/ }
+for b in ${bridge_instances//,/ }
 do
 	if [ "$b" == "mautrix_signal"* ]; then
 		botname_sg=$(ynh_app_setting_get --app $b --key botname)

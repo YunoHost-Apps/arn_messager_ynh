@@ -22,6 +22,18 @@ get__admins() {
 EOF
 }
 
+get__bridge_instances() {
+    value=$(ynh_app_setting_set --key=bridge_instances)
+    choices=$(ls -d /etc/yunohost/apps/mautrix_*| sed s@/etc/yunohost/apps/@@ | tr '\n' ',')
+
+echo "value: '$value'"
+echo "choices:"
+for bridge_instance in $(ls -d /etc/yunohost/apps/mautrix_*| sed s@/etc/yunohost/apps/@@)
+   do
+       echo "  - $bridge_instance"
+   done
+}
+
 #=================================================
 # SPECIFIC VALIDATORS FOR TOML SHORT KEYS
 #=================================================

@@ -38,6 +38,7 @@ services = ["__APP__"]
         [main.bridge.bridge_instances]
         ask = "Which Mautrix Bridge to use?"
         type = "tags"
+        choices = []
         help = "List the YunoHost Application ID of the Mautrix Bridges, e.g. mautrix_whatsapp ."
 
     [main.bot]
@@ -57,8 +58,8 @@ services = ["__APP__"]
 
         [main.bot.lang]
         ask = "Language of the ARN-Messager Bot"
-        type = "string"
-        help = "Should be in format 'fr_FR' or 'en_US'"
+        type = "select"
+        choices = ["en_US", "fr_FR"]
         bind = ":__INSTALL_DIR__/config.yaml"
 
         [main.bot.welcome_message]
