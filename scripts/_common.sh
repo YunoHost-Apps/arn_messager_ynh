@@ -73,6 +73,7 @@ set_arrays_in_yaml() {
 
   config_path="$file" key="$key" values="$values" python3 - <<'END_SCRIPT'
 import yaml
+import os
 config_path=os.environ[config_path"]
 key=os.environ["key"]
 values=os.environ["values"]
