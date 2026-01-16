@@ -80,7 +80,7 @@ values=os.environ["values"]
 
 with open(config_path, "r") as infile:
     config = yaml.safe_load(infile)
-    config[key]=values.split(",").replace(" ","")
+    config[key]=values.replace(" ","").split(",")
 
 with open(config_path, "w+") as outfile:
     yaml.dump(config, outfile)
