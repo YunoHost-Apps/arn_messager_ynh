@@ -19,7 +19,7 @@ welcome_message: __WELCOME_MESSAGE__
 whatsapp:
   bot: '@__BOTNAME_WA__:__SERVER_NAME__'
   command_prefix: '__COMMAND_PREFIX_WA__'
-  puppet: '@__USERNAME_TEMPLATE_WA__[a-z0-9-]+:__SERVER_NAME__$'
+  puppet: '@__USERNAME_TEMPLATE_WA__lid-[0-9]+:__SERVER_NAME__$'
 signal:
   bot: '@__BOTNAME_SG__:__SERVER_NAME__'
   command_prefix: '__COMMAND_PREFIX_SG__'
@@ -27,4 +27,4 @@ signal:
 telegram:
   bot: '@__BOTNAME_TG__:__SERVER_NAME__'
   command_prefix: '__COMMAND_PREFIX_TG__'
-  puppet: '@__USERNAME_TEMPLATE_TG__[a-z0-9-]+:__SERVER_NAME__$'
+  puppet: '@__USERNAME_TEMPLATE_TG__[0-9]+:__SERVER_NAME__$'
