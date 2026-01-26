@@ -46,17 +46,17 @@ set__bridge_instances() {
   ynh_app_setting_set --key=bridge_instances --value="$bridge_instances"
   set_bridge_config_from_ids
   config="$install_dir/config.yaml"
-  ynh_write_var_in_file --file="$config" --key="bot" --value="$botname_wa" --after="whatsapp"
+  ynh_write_var_in_file --file="$config" --key="bot" --value="@$botname_wa:$server_name" --after="whatsapp"
   ynh_write_var_in_file --file="$config" --key="command" --value="$command_prefix_wa" --after="whatsapp"
-  ynh_write_var_in_file --file="$config" --key="puppet" --value="$username_template_wa" --after="whatsapp"
+  ynh_write_var_in_file --file="$config" --key="puppet" --value="@${username_template_wa}lid-[0-9]+:$server_name" --after="whatsapp"
   
-  ynh_write_var_in_file --file="$config" --key="bot" --value="$botname_sg" --after="signal"
+  ynh_write_var_in_file --file="$config" --key="bot" --value="@$botname_sg:$server_name" --after="signal"
   ynh_write_var_in_file --file="$config" --key="command" --value="$command_prefix_sg" --after="signal"
-  ynh_write_var_in_file --file="$config" --key="puppet" --value="$username_template_sg" --after="signal"
+  ynh_write_var_in_file --file="$config" --key="puppet" --value="@${username_template_sg}[a-z0-9-]+:$server_name" --after="signal"
   
-  ynh_write_var_in_file --file="$config" --key="bot" --value="$botname_tg" --after="telegram"
+  ynh_write_var_in_file --file="$config" --key="bot" --value="@$botname_tg:$server_name" --after="telegram"
   ynh_write_var_in_file --file="$config" --key="command" --value="$command_prefix_tg" --after="telegram"
-  ynh_write_var_in_file --file="$config" --key="puppet" --value="$username_template_tg" --after="telegram"
+  ynh_write_var_in_file --file="$config" --key="puppet" --value="@${username_template_tg}[0-9]+:$server_name" --after="telegram"
   
   ynh_store_file_checksum "$install_dir/config.yaml"
 }
