@@ -21,10 +21,8 @@ test_format = 1.0
         botusers="$server_name"
         botaccount="arnmessager"
         botpassword="KianG7EAPXORCNWT"
+        homeserver="synapse"
         sudo -u $homeserver $synapse_install_dir/venv/bin/register_new_matrix_user -u $botaccount -p $botpassword -a -c /etc/matrix-$homeserver/homeserver.yaml  || ynh_die "register_new_matrix_user in Synapse failed"
-        # We test with mautrix_whatsapp because amd64, arm64 and armhf are available
-        #sudo yunohost app list | grep "mautrix_whatsapp" || sudo yunohost app install https://github.com/YunoHost-Apps/mautrix_whatsapp_ynh/tree/testing \
-        #    -a "botadmin=$botadmin&botusers=$botusers" --force
         """
 
     # -------------------------------
@@ -32,7 +30,7 @@ test_format = 1.0
     # -------------------------------
 
     args.bot_password = "KianG7EAPXORCNWT"
-    args.bridge_instances = "mautrix_whatsapp"
+    args.bridge_instances = "" # do not test retrieving mautrix settings, so we don't need to preinstall mautrix bridges in all tests
     args.bot_users = "matrix.domain.tld"
     args.admins = "@johndoe:matrix.domain.tld"
 
@@ -60,11 +58,14 @@ test_format = 1.0
         botusers="$server_name"
         botaccount="arnmessager"
         botpassword="KianG7EAPXORCNWT"
+        homeserver="synapse"
         sudo -u $homeserver $synapse_install_dir/venv/bin/register_new_matrix_user -u $botaccount -p $botpassword -a -c /etc/matrix-$homeserver/homeserver.yaml  || ynh_die "register_new_matrix_user in Synapse failed"
         # We test with mautrix_whatsapp because amd64, arm64 and armhf are available
-        #sudo yunohost app list | grep "mautrix_whatsapp" || sudo yunohost app install https://github.com/YunoHost-Apps/mautrix_whatsapp_ynh/tree/testing \
-        #    -a "botadmin=$botadmin&botusers=$botusers" --force
+        sudo yunohost app list | grep "mautrix_whatsapp" || sudo yunohost app install https://github.com/YunoHost-Apps/mautrix_whatsapp_ynh/tree/testing \
+            -a "botadmin=$botadmin&botusers=$botusers" --force
         #sudo yunohost app list | grep "mautrix_signal" || sudo yunohost app install https://github.com/YunoHost-Apps/mautrix_signal_ynh/tree/testing \
+        #    -a "botadmin=$botadmin&botusers=$botusers" --force
+        #sudo yunohost app list | grep "mautrix_telegram" || sudo yunohost app install https://github.com/YunoHost-Apps/mautrix_telegram_ynh/tree/testing \
         #    -a "botadmin=$botadmin&botusers=$botusers" --force
         """
 
@@ -73,6 +74,7 @@ test_format = 1.0
     only = ["install.subdir"]
 
     args.bot_password = "KianG7EAPXORCNWT"
-    args.bridge_instances = "mautrix_whatsapp,mautrix_signal"
+    # We test with mautrix_whatsapp because amd64, arm64 and armhf are available
+    args.bridge_instances = "mautrix_whatsapp"#,mautrix_signal,mautrix_telegram"
     args.bot_users = "matrix.domain.tld"
     args.admins = "@johndoe:matrix.domain.tld"
