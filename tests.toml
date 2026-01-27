@@ -22,6 +22,7 @@ test_format = 1.0
         botaccount="arnmessager"
         botpassword="KianG7EAPXORCNWT"
         homeserver="synapse"
+        synapse_install_dir="/var/www/synapse"
         sudo -u $homeserver $synapse_install_dir/venv/bin/register_new_matrix_user -u $botaccount -p $botpassword -a -c /etc/matrix-$homeserver/homeserver.yaml  || ynh_die "register_new_matrix_user in Synapse failed"
         """
 
@@ -59,6 +60,7 @@ test_format = 1.0
         botaccount="arnmessager"
         botpassword="KianG7EAPXORCNWT"
         homeserver="synapse"
+        synapse_install_dir="/var/www/synapse"
         sudo -u $homeserver $synapse_install_dir/venv/bin/register_new_matrix_user -u $botaccount -p $botpassword -a -c /etc/matrix-$homeserver/homeserver.yaml  || ynh_die "register_new_matrix_user in Synapse failed"
         # We test with mautrix_whatsapp because amd64, arm64 and armhf are available
         sudo yunohost app list | grep "mautrix_whatsapp" || sudo yunohost app install https://github.com/YunoHost-Apps/mautrix_whatsapp_ynh/tree/testing \
