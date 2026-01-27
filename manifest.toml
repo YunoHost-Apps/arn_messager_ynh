@@ -70,20 +70,20 @@ ram.runtime = "50M"
     type = "string"
 
     [install.bot_number]
-    ask.en = "Phone number of the Signal/Whatsapp relay account. Use +33612345678 formatting"
-    ask.fr = "Numéro de téléphone du compte Signal/Whatsapp relai. Au format +33612345678"
+    ask.en = "Phone number of the Signal/Whatsapp relay account. Use 33612345678 international formatting"
+    ask.fr = "Numéro de téléphone du compte Signal/Whatsapp relai. Au format international 33612345678"
     help.en = "You will have to scan the QR code sent by the bridge with the Signal/Whatsapp App linked to this number."
     help.fr = "Il faudra scanner le QR code envoyé par le bridge avec l'appli Signal/Whatsapp liée à ce numéro."
     type = "string"
-    example = "+33612345678"
+    example = "33612345678"
 
     [install.bot_users]
     ask.en = "Choose Matrix users or homeservers authorized to invite the ARN-Messager bot"
     ask.fr = "Choisissez les comptes ou homeservers Matrix autorisés à inviter le robot ARN-Messager"
     help.en = "Usually local server. Give the Matrix `server_name`, not the full domain/URL."
-    help.fr = "Typiquement le serveur local. Donner le server_name` du serveur Matrix, pas le domaine/URL complet."
+    help.fr = "Typiquement le serveur local. Donner le `server_name` du serveur Matrix, pas le domaine/URL complet."
     type = "string"
-    example = "synapse.servername"
+    example = "server_name.synapse"
     default = "domain.tld"
 
     [install.admins]
@@ -92,7 +92,7 @@ ram.runtime = "50M"
     help.en = "Usually local synapse server admin. Give the full Matrix address (MXID)."
     help.fr = "Typiquement les admins du serveur synapse local. Donner l'identifiant Matrix complet (MXID)."
     type = "string"
-    example = "@admin:synapse_server.name"
+    example = "@admin:server_name.synapse"
     default = "@admin:domain.tld"
 
     [install.bridge_instances]

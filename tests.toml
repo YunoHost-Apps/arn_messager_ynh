@@ -31,9 +31,10 @@ test_format = 1.0
     # -------------------------------
 
     args.bot_password = "KianG7EAPXORCNWT"
-    args.bridge_instances = "" # do not test retrieving mautrix settings, so we don't need to preinstall mautrix bridges in all tests
+    args.bot_number = "33612345678"
     args.bot_users = "matrix.domain.tld"
     args.admins = "@johndoe:matrix.domain.tld"
+    args.bridge_instances = "" # do not test retrieving mautrix settings, so we don't need to preinstall mautrix bridges in all tests
 
     # -------------------------------
     # Commits to test upgrade from
@@ -76,7 +77,8 @@ test_format = 1.0
     only = ["install.subdir"]
 
     args.bot_password = "KianG7EAPXORCNWT"
-    # We test with mautrix_whatsapp because amd64, arm64 and armhf are available
-    args.bridge_instances = "mautrix_whatsapp"#,mautrix_signal,mautrix_telegram"
+    args.bot_number = "33612345678"
     args.bot_users = "matrix.domain.tld"
     args.admins = "@johndoe:matrix.domain.tld"
+    # We test with mautrix_whatsapp because amd64, arm64 and armhf are available
+    args.bridge_instances = "mautrix_whatsapp"#,mautrix_signal,mautrix_telegram"

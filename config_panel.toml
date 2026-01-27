@@ -53,7 +53,7 @@ services = ["__APP__"]
         [main.bot.bot_number]
         ask = "Phone number of the ARN-Messager Bot"
         type = "string"
-        help = "Sets bot phone number, e.g. '+33601010101'"
+        help = "Sets bot international phone number, e.g. '33601010101'"
         bind = ":__INSTALL_DIR__/config.yaml"
 
         [main.bot.lang]
