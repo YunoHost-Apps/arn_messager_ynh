@@ -16,6 +16,10 @@ synapse_install_dir=$(ynh_app_setting_get --app $homeserver --key install_dir)
 server_name=$(ynh_app_setting_get --app $homeserver --key server_name)
 domain=$(ynh_app_setting_get --app $homeserver --key domain)
 port_synapse_tls=$(ynh_app_setting_get --app $homeserver --key port_synapse_tls)
+device_id=$(ynh_string_random --filter='A-Z' --length=11)
+device_name=$(ynh_string_random --filter='A-Z' --length=9)
+ynh_app_setting_set --key=device_id --value=$device_id
+ynh_app_setting_set --key=device_name --value=$device_name
 ynh_app_setting_set --key=server_name --value=$server_name
 ynh_app_setting_set --key=domain --value=$domain
 ynh_app_setting_set --key=port_synapse_tls --value=$port_synapse_tls
@@ -24,33 +28,21 @@ ynh_app_setting_set --key=port_synapse_tls --value=$port_synapse_tls
 # SET STANDARD SETTINGS FROM DEFAULT CONFIG
 #=================================================
 
-#listuser=$(ynh_app_setting_get --app "$bridge" --key listuser)
-#listadmin=$(ynh_app_setting_get --app "$bridge" --key listadmin)
-if [ "$botusers" == "domain.tld" ]; then
-	botusers="$server_name"
+if [ "$bot_users" == "domain.tld" ]; then
+	bot_users="$server_name"
 fi
 
 if [ "$admins" == "@admin:domain.tld" ]; then
 	admins="@admin:$server_name"
 fi
-listuser=$botusers
-listadmin=$admins
-#device_name="QSDGZETEZ"
-im_bridged=$bridge
-bot_name=$botname
-bot_number=$botnumber
-lang=$language
 
-ynh_app_setting_set --key=botaccount --value=$botaccount
-relaybot_admin="@$botaccount:$server_name" 
+relaybot_admin="@$bot_account:$server_name" 
 welcome_message="ask_portal_admin"
 
-ynh_app_setting_set --key=listuser --value=$listuser
-ynh_app_setting_set --key=listadmin --value=$listadmin
-ynh_app_setting_set --key=im_bridged --value=$im_bridged
-ynh_app_setting_set --key=bot_name --value=$bot_name
-ynh_app_setting_set --key=bot_number --value=$bot_number
-ynh_app_setting_set --key=lang --value=$lang
+ynh_app_setting_set --key=bot_users --value=$bot_users
+ynh_app_setting_set --key=admins --value=$admins
+ynh_app_setting_set --key=bridge_instances --value=$bridge_instances
+ynh_app_setting_set --key=relaybot_admin --value=$relaybot_admin
 ynh_app_setting_set --key=welcome_message --value=$welcome_message
 
 #=================================================
@@ -81,8 +73,8 @@ set_bridge_config_from_ids
 ynh_config_add --template="config.yaml" --destination="$install_dir/config.yaml"
 
 # This calls allows to set multiple users during install question "botusers" specifying them separated by a comma
-#set__listuser
-#set__listadmin
+set__bot_users
+set__admins
 
 chown -R "$app:$app" "$install_dir"
 

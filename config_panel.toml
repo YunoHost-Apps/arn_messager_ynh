@@ -20,12 +20,12 @@ services = ["__APP__"]
         '''
         type = "markdown"
 
-        [main.permissions.listuser]
+        [main.permissions.bot_users]
         ask = "Bot Users"
         type = "tags"
         help = "User Role: Access to use the ARN-Messager Bot to bridge new rooms via Mautrix Bridges."
 
-        [main.permissions.listadmin]
+        [main.permissions.admins]
         ask = "Bot Administrators"
         type = "tags"
         help = "Admin Role: User level and permission to send administration commands to the Mautrix Bridges over the ARN-Messager Bot."
@@ -35,11 +35,11 @@ services = ["__APP__"]
     [main.bridge]
     name = "Puppetting Bridges Settings"
 
-        [main.bridge.im_bridged]
+        [main.bridge.bridge_instances]
         ask = "Which Mautrix Bridge to use?"
         type = "tags"
+        choices = []
         help = "List the YunoHost Application ID of the Mautrix Bridges, e.g. mautrix_whatsapp ."
-        bind = ":__INSTALL_DIR__/config.yaml"
 
     [main.bot]
     name = "ARN-Messager Bot Settings"
@@ -53,13 +53,13 @@ services = ["__APP__"]
         [main.bot.bot_number]
         ask = "Phone number of the ARN-Messager Bot"
         type = "string"
-        help = "Sets bot phone number, e.g. '+33601010101'"
+        help = "Sets bot international phone number, e.g. '33601010101'"
         bind = ":__INSTALL_DIR__/config.yaml"
 
         [main.bot.lang]
         ask = "Language of the ARN-Messager Bot"
-        type = "string"
-        help = "Should be in format 'fr_FR' or 'en_US'"
+        type = "select"
+        choices = ["en_US", "fr_FR"]
         bind = ":__INSTALL_DIR__/config.yaml"
 
         [main.bot.welcome_message]

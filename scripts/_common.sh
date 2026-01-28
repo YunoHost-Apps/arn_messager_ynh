@@ -39,22 +39,24 @@ command_prefix_tg='!tg'
 # à ajouter au config panel de https://github.com/YunoHost-Apps/mautrix_whatsapp_ynh/blob/master/conf/config.yaml#L314
 command_prefix_wa='!wa'
 
-# TODO handle im_bridged array
-if [ "$bridge" == "mautrix_signal" ]; then
-	botname_sg=$(ynh_app_setting_get --app $bridge --key botname)
-	#command_prefix_sg=$(ynh_app_setting_get --app $bridge --key command_prefix)
-	username_template_sg=$(ynh_app_setting_get --app $bridge --key username_template) | sed 's/{{.}}//'
-fi
-if [ "$bridge" == "mautrix_telegram" ]; then
-	botname_tg=$(ynh_app_setting_get --app $bridge --key botname)
-	#command_prefix_tg=$(ynh_app_setting_get --app $bridge --key command_prefix)
-	username_template_tg=$(ynh_app_setting_get --app $bridge --key username_template) | sed 's/{{.}}//'
-fi
-if [ "$bridge" == "mautrix_whatsapp" ]; then
-	botname_wa=$(ynh_app_setting_get --app $bridge --key botname)
-	#command_prefix_wa=$(ynh_app_setting_get --app $bridge --key command_prefix)
-	username_template_wa=$(ynh_app_setting_get --app $bridge --key username_template) | sed 's/{{.}}//'
-fi
+for b in ${bridge_instances//,/ }
+do
+	if [ "$b" == "mautrix_signal"* ]; then
+		botname_sg=$(ynh_app_setting_get --app $b --key botname)
+		#command_prefix_sg=$(ynh_app_setting_get --app $b --key command_prefix)
+		username_template_sg=$(ynh_app_setting_get --app $b --key username_template) | sed 's/{{.}}//'
+	fi
+	if [ "$b" == "mautrix_telegram"* ]; then
+		botname_tg=$(ynh_app_setting_get --app $b --key botname)
+		#command_prefix_tg=$(ynh_app_setting_get --app $b --key command_prefix)
+		username_template_tg=$(ynh_app_setting_get --app $b --key username_template) | sed 's/{{.}}//'
+	fi
+	if [ "$b" == "mautrix_whatsapp"* ]; then
+		botname_wa=$(ynh_app_setting_get --app $b --key botname)
+		#command_prefix_wa=$(ynh_app_setting_get --app $b --key command_prefix)
+		username_template_wa=$(ynh_app_setting_get --app $b --key username_template) | sed 's/{{.}}//'
+	fi
+done
 
 }
 
@@ -62,47 +64,38 @@ fi
 # CONFIG PANEL SETTERS
 #=================================================
 
-apply_permissions() {
-    set -o noglob # Disable globbing to avoid expansions when passing * as value.
-    declare values="list$role"
-    newValues="${!values}" # Here we expand the dynamic variable we created in the previous line. ! Does the trick
-    newValues="${newValues//\"}"
-    usersArray=(${newValues//,/ }) # Split the values using comma (,) as separator.
+set_arrays_in_yaml() {
+  local -A args_array=([f]=file= [k]=key= [v]=values=)
+  local file
+  local key
+  local values
+  ynh_handle_getopts_args "$@"
 
-    if [ -n "$newValues" ]; then
-        #ynh_systemctl --service="$app" --action=stop
-        # Get all entries between "permissions:" and "relay:" keys, remove the role part, remove commented parts, format it with newlines and clean whitespaces and double quotes.
-        allDefinedEntries=$(awk '/permissions:/{flag=1; next} /relay:/{flag=0} flag' "$install_dir/config.yaml" | sed "/: $role/d" | sed -r 's/: (admin|user|relay)//' | tr -d '[:blank:]' | sed '/^#/d' | tr -d '\"' | tr ',' '\n' )
-        # Delete everything from the corresponding role to insert the new defined values. This way we also handle deletion of users.
-        sed -i "/permissions:/,/relay:/{/: $role/d;}" "$install_dir/config.yaml"
-        # Ensure that entries with value surrounded with quotes are deleted too. E.g. "users".
-        sed -i "/permissions:/,/relay:/{/: \"$role\"/d;}" "$install_dir/config.yaml"
-      	for user in "${usersArray[@]}"
-            do
-              if grep -q -x "${user}" <<< "$allDefinedEntries"
-              then
-                ynh_print_info "User $user already defined in another role."
-              else
-                sed -i "/permissions:/a \        \\\"$user\": $role" "$install_dir/config.yaml" # Whitespaces are needed so that the file can be correctly parsed
-              fi
-        done
-    fi
-    set +o noglob
+  config_path="$file" key="$key" values="$values" python3 - <<'END_SCRIPT'
+import yaml
+import os
+config_path=os.environ["config_path"]
+key=os.environ["key"]
+values=os.environ["values"]
 
-    ynh_print_info "Users with role $role added in $install_dir/config.yaml"
+with open(config_path, "r") as infile:
+    config = yaml.safe_load(infile)
+    config[key]=values.replace(" ","").split(",")
+
+with open(config_path, "w+") as outfile:
+    yaml.dump(config, outfile)
+END_SCRIPT
 }
 
-set__listuser() {
-  role="user"
-  ynh_app_setting_set --key=listuser --value="$listuser"
-  apply_permissions
+set__bot_users() {
+  ynh_app_setting_set --key=bot_users --value="$bot_users"
+  set_arrays_in_yaml --file="$install_dir/config.yaml" --key="bot_users" --values="$bot_users"
   ynh_store_file_checksum "$install_dir/config.yaml"
 }
 
 
-set__listadmin() {
-  role="admin"
-  ynh_app_setting_set --key=listadmin --value="$listadmin"
-  apply_permissions
+set__admins() {
+  ynh_app_setting_set --key=admins --value="$admins"
+  set_arrays_in_yaml --file="$install_dir/config.yaml" --key="admins" --values="$admins"
   ynh_store_file_checksum "$install_dir/config.yaml"
 }

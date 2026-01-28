@@ -6,33 +6,32 @@ source /usr/share/yunohost/helpers
 # SPECIFIC GETTERS FOR TOML SHORT KEY
 #=================================================
 
-get__botname() {
-    botname=$(ynh_app_setting_get --app $app --key botname)
-    echo "${botname}"
-}
-
-get__listuser() {
-  existingUsers=$(grep -- "\".*: user" "$install_dir/config.yaml" | sed -r 's/: user//' | tr -d '[:blank:]' | sed '/^#/d' | tr -d '\"' | tr '\n' ',')
+get__bot_users() {
+  existingUsers=$(yq -r '.bot_users|join(",")' "$install_dir/config.yaml")
 
   cat <<EOF
 "$existingUsers"
 EOF
 }
 
-get__listrelay() {
-  existingRelayUsers=$(grep -- "\".*: relay" "$install_dir/config.yaml" | sed -r 's/: relay//' | tr -d '[:blank:]' | sed '/^#/d' | tr -d '\"' | tr '\n' ',')
-
-  cat <<EOF
-"$existingRelayUsers"
-EOF
-}
-
-get__listadmin() {
-  existingAdmins=$(grep -- "\".*: admin" "$install_dir/config.yaml" | sed -r 's/: admin//' | tr -d '[:blank:]' | sed '/^#/d' | tr -d '\"' | tr '\n' ',')
+get__admins() {
+  existingAdmins=$(yq -r '.admins|join(",")' "$install_dir/config.yaml")
 
   cat <<EOF
 "$existingAdmins"
 EOF
+}
+
+get__bridge_instances() {
+    value=$(ynh_app_setting_set --key=bridge_instances)
+    choices=$(ls -d /etc/yunohost/apps/mautrix_*| sed s@/etc/yunohost/apps/@@ | tr '\n' ',')
+
+echo "value: '$value'"
+echo "choices:"
+for bridge_instance in $(ls -d /etc/yunohost/apps/mautrix_*| sed s@/etc/yunohost/apps/@@)
+   do
+       echo "  - $bridge_instance"
+   done
 }
 
 #=================================================
@@ -42,5 +41,28 @@ EOF
 #=================================================
 # SPECIFIC SETTERS FOR TOML SHORT KEYS
 #=================================================
+
+set__bridge_instances() {
+  ynh_app_setting_set --key=bridge_instances --value="$bridge_instances"
+  set_bridge_config_from_ids
+  config="$install_dir/config.yaml"
+  ynh_write_var_in_file --file="$config" --key="bot" --value="@$botname_wa:$server_name" --after="whatsapp"
+  ynh_write_var_in_file --file="$config" --key="command" --value="$command_prefix_wa" --after="whatsapp"
+  ynh_write_var_in_file --file="$config" --key="puppet" --value="@${username_template_wa}lid-[0-9]+:$server_name" --after="whatsapp"
+  
+  ynh_write_var_in_file --file="$config" --key="bot" --value="@$botname_sg:$server_name" --after="signal"
+  ynh_write_var_in_file --file="$config" --key="command" --value="$command_prefix_sg" --after="signal"
+  ynh_write_var_in_file --file="$config" --key="puppet" --value="@${username_template_sg}[a-z0-9-]+:$server_name" --after="signal"
+  
+  ynh_write_var_in_file --file="$config" --key="bot" --value="@$botname_tg:$server_name" --after="telegram"
+  ynh_write_var_in_file --file="$config" --key="command" --value="$command_prefix_tg" --after="telegram"
+  ynh_write_var_in_file --file="$config" --key="puppet" --value="@${username_template_tg}[0-9]+:$server_name" --after="telegram"
+  
+  ynh_store_file_checksum "$install_dir/config.yaml"
+}
+
+# !!!!!!!!!!!!!!!!!!!!!!!
+# WARNING: there are custom setters into _common.sh
+# !!!!!!!!!!!!!!!!!!!!!!!
 
 ynh_app_config_run $1
