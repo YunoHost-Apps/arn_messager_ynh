@@ -120,9 +120,9 @@ ram.runtime = "50M"
     #in_subdir = false
     #extract = false
     #rename = "mautrix-whatsapp"
-    url = "https://code.ffdn.org/arn/arn-messager/-/archive/testing/arn-messager-testing.tar.gz"
-    sha256 = "8cb11f9075b7d52d8f0d9995c05e6a026447ef0b903bbf2a16dd0aa941a5b525"
-    autoupdate.strategy = "latest_gitlab_release"
+    url = "https://codeberg.org/ARN/arn-messager/archive/1.2.0.tar.gz"
+    sha256 = "4894ef889b76307159540f55b8ea35ce9ff21b1c55dff591a500436b0c88f0ed"
+    autoupdate.strategy = "latest_forgejo_release"
 
     [resources.system_user]
 
