@@ -123,6 +123,7 @@ ram.runtime = "50M"
     url = "https://codeberg.org/ARN/arn-messager/archive/1.2.0.tar.gz"
     sha256 = "4894ef889b76307159540f55b8ea35ce9ff21b1c55dff591a500436b0c88f0ed"
     autoupdate.strategy = "latest_forgejo_release"
+    autoupdate.upstream = "https://codeberg.org/ARN/arn-messager/"
 
     [resources.system_user]
 
